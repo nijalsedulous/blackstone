@@ -85,7 +85,7 @@
 
                     </li>
 
-                    <li @if($controller_name == 'properties')class="nav-active nav-expanded" @endif>
+                    <li @if($controller_name == 'properties' && $action_name !='contacts')class="nav-active nav-expanded" @endif>
                         <a href="/admin/properties">
                             <i class="fa fa-building-o" aria-hidden="true"></i>
                             <span>Properties</span>

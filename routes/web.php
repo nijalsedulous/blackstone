@@ -18,7 +18,10 @@ Route::prefix('admin')->group(function () {
 
     Auth::routes();
     Route::group(['middleware' => array('auth')], function() {
+        Route::get('properties/contacts', 'PropertyController@contacts')->name('properties.contacts');
+
         Route::resource('properties', 'PropertyController');
+
     });
 });
 

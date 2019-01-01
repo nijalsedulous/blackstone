@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Property_image;
-
+use App\Models\Property_contact;
 use App\Models\Country;
 use Validator;
 use Image;
@@ -228,5 +228,14 @@ class PropertyController extends Controller
             $properties_image->image_path =$image_full_path.$new_file_name;
             $properties_image->save();
         }
+    }
+
+    public function contacts(){
+
+        $property_contacts= Property_contact::all();
+        $data['property_contacts']=$property_contacts;
+
+        return view('admin.properties.contacts',$data);
+
     }
 }
