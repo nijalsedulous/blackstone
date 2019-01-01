@@ -4,6 +4,8 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('properties', 'FrontController@properties')->name('properties');
 Route::get('property/{id}', 'FrontController@property_details')->name('property_details');
 Route::get('property/download_pdf/{id}', 'FrontController@download_pdf')->name('download_pdf');
+Route::post('property/store_contacts', 'FrontController@store_contacts')->name('store_contacts');
+
 
 
 

@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Country;
+use App\Models\Property_contact;
 
-
+use Validator;
 
 class FrontController extends Controller
 {
@@ -59,5 +60,38 @@ class FrontController extends Controller
         }else{
             abort('404');
         }
+    }
+
+    public function store_contacts(Request $request){
+
+        $property_id = $request->property_id;
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'phone' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/property/'.$property_id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $input = $request->all();
+
+        $property_contact = new Property_contact();
+        $property_contact->property_id = $input['property_id'];
+        $property_contact->name = $input['name'];
+        $property_contact->email = $input['email'];
+        $property_contact->subject = $input['subject'];
+        $property_contact->phone = $input['phone'];
+        $property_contact->message = $input['message'];
+        $property_contact->save();
+
+        $request->session()->flash('message', 'Property Contact has been added successfully!');
+        return redirect('/property/'.$property_id);
+
     }
 }

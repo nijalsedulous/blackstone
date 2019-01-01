@@ -82,9 +82,9 @@
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pro_vedio">
                     <?php $videoId = explode("v=",$property->video_url);
-                       // dd($videoId);
+                        $property_video =isset($videoId[1])?$videoId[1]:"";
                     ?>
-                    <iframe src="https://www.youtube.com/embed/{{$videoId[1]}}" allowfullscreen=""></iframe>
+                    <iframe src="https://www.youtube.com/embed/{{$property_video}}" allowfullscreen=""></iframe>
                     {{--<!--<video autoplay controls controlslist="nodownload" height="auto" poster="image/video-poster.jpg" loop muted="" playsinline="" width="100%">--}}
                       {{--<source src="https://www.youtube.com/embed/5e0LxrLSzok" type="video/mp4" />--}}
                     {{--</video>-->--}}
@@ -133,27 +133,48 @@
                     </div>
                 </div>
             </div>
+
+            @if (Session::has('message'))
+                <div class="alert alert-success">
+                    <strong> {{ Session::get('message') }}</strong>
+                </div>
+            @endif
+            {{Form::open(['url' => 'property/store_contacts/', 'method' => 'post'])}}
+            {{csrf_field()}}
+            <input type="hidden" name="property_id" value="{{$property->id}}">
             <div class="row">
                 <div class="col-lg-8 col-md-12 offset-lg-2 col-sm-12 col-xs-12">
                     <div class="row contact-2">
                         <div class="col-md-6">
                             <div class="form-group name">
                                 <input type="text" name="name" class="form-control" placeholder="Name">
+                                @if ($errors->has('name'))
+                                <div class="text-danger">Name field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group email">
                                 <input type="email" name="email" class="form-control" placeholder="Email">
+                                @if ($errors->has('email'))
+                                    <div class="text-danger">Email field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group subject">
                                 <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                @if ($errors->has('subject'))
+                                    <div class="text-danger">Subject field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group number">
                                 <input type="text" name="phone" class="form-control" placeholder="Number">
+                                @if ($errors->has('phone'))
+                                    <div class="text-danger">Phone field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -169,6 +190,7 @@
                     </div>
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </section>
 
