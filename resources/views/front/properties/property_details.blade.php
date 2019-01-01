@@ -25,7 +25,7 @@
                         <div class="carousel-inner">
                             @foreach($property->property_images  as $key=> $pi)
                             <div class="item carousel-item @if($key == 0) active @endif" data-slide-number="{{$key}}">
-                                <img src="{{$pi->image_path}}" class="img-fluid"  alt="slider-properties">
+                                <img src="{{$pi->image_path}}" class="img-fluid" style="height:350px" alt="slider-properties">
                             </div>
                             @endforeach
 
@@ -81,10 +81,13 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pro_vedio">
-                    <iframe src="{{$property->video_url}}" allowfullscreen=""></iframe>
-                    <!--<video autoplay controls controlslist="nodownload" height="auto" poster="image/video-poster.jpg" loop muted="" playsinline="" width="100%">
-                      <source src="https://www.youtube.com/embed/5e0LxrLSzok" type="video/mp4" />
-                    </video>-->
+                    <?php $videoId = explode("v=",$property->video_url);
+                       // dd($videoId);
+                    ?>
+                    <iframe src="https://www.youtube.com/embed/{{$videoId[1]}}" allowfullscreen=""></iframe>
+                    {{--<!--<video autoplay controls controlslist="nodownload" height="auto" poster="image/video-poster.jpg" loop muted="" playsinline="" width="100%">--}}
+                      {{--<source src="https://www.youtube.com/embed/5e0LxrLSzok" type="video/mp4" />--}}
+                    {{--</video>-->--}}
                 </div>
             </div>
         </div>

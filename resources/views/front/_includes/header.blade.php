@@ -6,7 +6,7 @@
 <header class="StickyHeader">
     <div class="container">
         <nav id='cssmenu'>
-            <div class="logo"><a href="index.html">
+            <div class="logo"><a href="/">
                 {!! HTML::image('/images/blackstone-logo.png', 'logo') !!}
 
                 </a></div>
