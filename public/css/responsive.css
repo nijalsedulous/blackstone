@@ -1,0 +1,85 @@
+@media only screen and (min-width:320px)and (max-width:390px) {.icon_left {width: 30%;} .icon_right {    width: 70%;} 	}
+@media only screen and (min-width:480px)and (max-width:575px) {.icon_left {width:20%;} .icon_right {    width:80%;} 	}
+@media only screen and (min-width:320px)and (max-width:400px) {
+.carousel-caption h1 { font-size: 24px; margin-top: 10px; }
+.carousel-caption p { font-size: 15px; margin-bottom: 0px; }
+.breadcrumb-area h1 { font-size: 18px; margin-bottom: 7px; }
+.breadcrumbs a, .breadcrumbs { font-size: 14px; }
+.peoperty_name { font-size: 24px; }
+.pro_loctation { font-size: 14px; padding-left: 20px; }
+.pro_loctation i { font-size: 16px; }
+.bnr_slider .carousel-item {    min-height: 300px;}
+}
+@media only screen and (min-width:320px)and (max-width:575px) {
+.client_box { width: 50%; }
+}
+@media only screen and (min-width:401px)and (max-width:575px) {
+.carousel-caption h1 { font-size: 28px; margin-top: 10px; }
+.carousel-caption p { font-size: 16px; margin-bottom: 0px; }
+.breadcrumb-area h1 { font-size: 20px; margin-bottom: 7px; }
+.peoperty_name { font-size: 28px; }
+.bnr_slider .carousel-item {    min-height:350px;}
+}
+@media only screen and (min-width:576px)and (max-width: 767px) {
+.carousel-caption h1 { font-size: 36px; margin-top: 10px; }
+.carousel-caption p { font-size: 18px; margin-bottom: 0px; }
+.client_box { width: 25%; }
+.breadcrumb-area h1 { font-size: 20px; margin-bottom: 7px; }
+.peoperty_name { font-size: 28px; }
+.icon_left {width: 17%;} .icon_right {    width:83%;} 
+.bnr_slider .carousel-item {    min-height:400px;}
+}
+@media (max-width:576px) {
+.Country_sel { text-align: left; }
+}
+@media (max-width: 767px) {
+.ptb80, .why_us, .dwnlod { padding-bottom: 50px; padding-top: 50px; }
+.ptb8050, .clients { padding-top: 50px; padding-bottom: 20px; }
+.footer { padding-top: 50px; }
+header { border-bottom: none; }
+.img_mb30 { margin-bottom: 30px; }
+.bg_flex { min-height: 350px; position: relative; margin-bottom: 40px; }
+.country { min-height: 48px; }
+.contact_box { margin-top: 30px; }
+.breadcrumb-area { top: 50%; }
+.inner_title_bg { height: 250px; }
+.property_title_bg { min-height: 300px; }
+.ourprocess { width: 220px; margin: auto auto 30px auto; float: none; }
+.left_space { display: none; } .pro_vedio iframe {height: 300px;}
+.hidden_1 {display:none;}.hidden_4 {display:block;}
+.why_us.res_top {padding-top:0;}
+.bnr_slider .carousel-inner img {position: absolute;width: auto;}
+.bnr_slider .carousel-caption {transform: translateY(61%);}
+}
+@media only screen and (min-width:768px)and (max-width:992px) {
+.icon_left { width: 37%; }
+.icon_right { width: 63%; }
+.country { font-size: 14px; line-height: 18px; }
+.client_box { padding-left: 7px; padding-right: 8px; }
+.carousel-caption p { font-size: 22px; margin-bottom: 5px; }
+.carousel-caption h1 { font-size: 35px; }
+.pro_name { min-height: 48px; }
+.process_box { width: 110px; height: 110px; border: 9px solid #898989; }
+.pc_line { display: none; }
+.process_box h4 { font-size: 12px; margin-top: 18%; }
+}
+@media only screen and (min-width:768px)and (max-width:1000px) {.bnr_slider .carousel-item {min-height: 500px;}.bnr_slider .carousel-inner img {position: absolute;width: auto;}.bnr_slider .carousel-caption {transform: translateY(70%);}}
+@media only screen and (min-width:993px)and (max-width:1199px) {
+.carousel-caption p { font-size: 26px; margin-bottom: 6px; }
+.carousel-caption h1 { font-size: 40px; }
+.process_box { width: 148px; height: 148px; border: 12px solid #898989; }
+.icon_left { width: 29%; }
+.icon_right { width: 71%; }
+}
+@media only screen and (min-width:1001px)and (max-width:1199px) {
+#cssmenu > ul > li > a { padding: 20px 11px; }
+.bnr_slider .carousel-item {min-height: 500px;}.bnr_slider .carousel-inner img {position: absolute;width: auto;}
+}
+@media only screen and (min-width:768px)and (max-width:1199px) {
+.property_title_bg { min-height: 500px; }
+.breadcrumb-area h1 { font-size: 26px; }
+.peoperty_name { font-size: 32px; }
+}
+@media (max-width:992px) {
+.res_des { margin-top: 30px; }
+}
