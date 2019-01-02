@@ -21,6 +21,13 @@ Route::prefix('admin')->group(function () {
         Route::get('properties/contacts', 'PropertyController@contacts')->name('properties.contacts');
 
         Route::resource('properties', 'PropertyController');
+        Route::resource('settings', 'SettingController');
+        Route::resource('social_media', 'SocialMediaController');
+        Route::resource('services', 'ServiceController');
+        Route::resource('banners', 'BannerController');
+
+
+
 
     });
 });
