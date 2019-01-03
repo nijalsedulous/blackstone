@@ -26,7 +26,7 @@
                 <li><a href='#'>BLOG</a></li>
                 <li><a href='#'>MY ACCOUNT</a></li>
                 <li><a href='#'>SUBMIT PROPERTY</a></li>
-                <li><a href="contact-us.html">CONTACT</a></li>
+                <li><a href="/contact-us">CONTACT</a></li>
             </ul>
         </nav>
     </div>

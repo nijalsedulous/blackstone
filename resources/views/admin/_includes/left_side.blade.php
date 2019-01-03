@@ -131,12 +131,6 @@
                                 </a>
                             </li>
 
-                            <li @if($controller_name == 'countries')class="nav-active" @endif>
-                                <a href="/admin/countries">
-                                    Country
-                                </a>
-                            </li>
-
                         </ul>
                     </li>
 
