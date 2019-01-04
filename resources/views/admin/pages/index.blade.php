@@ -53,7 +53,7 @@
                         <td data-title="Id">{{$blog->id}}</td>
                         <td data-title="Name" >{{$blog->category->name}}</td>
                         <td data-title="Icon" >{{$blog->title}}</td>
-                        <td data-title="URL" >{!! str_limit($blog->description, 200, '...') !!}</td>
+                        <td data-title="URL" >{!! $blog->description !!}</td>
                         <td data-title="Created">{{date('d-M-Y',strtotime($blog->created_at))}}</td>
                         <td data-title="Actions" class="text-right actions">
                             {!! Form::model($blog,['method' => 'DELETE', 'action' => ['BlogController@destroy', $blog->id ], 'id'=>'frmdeletblog_'.$blog->id ]) !!}

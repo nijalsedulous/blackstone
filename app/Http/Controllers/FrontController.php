@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Country;
 use App\Models\Property_contact;
+use App\Models\Contact;
+use App\Models\Blog;
 
 use Validator;
 
@@ -93,5 +95,55 @@ class FrontController extends Controller
         $request->session()->flash('message', 'Property Contact has been added successfully!');
         return redirect('/property/'.$property_id);
 
+    }
+
+    public function save_contact(Request $request){
+
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'phone' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/contact-us')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $input = $request->all();
+
+        $contact = new Contact();
+        $contact->name = $input['name'];
+        $contact->email = $input['email'];
+        $contact->subject = $input['subject'];
+        $contact->phone = $input['phone'];
+        $contact->message = $input['message'];
+        $contact->save();
+
+        $request->session()->flash('message', 'Contact has been added successfully!');
+        return redirect('/contact-us');
+
+    }
+
+    public function blog(){
+        $blogs= Blog::all();
+        $data['blogs']=$blogs;
+        return view('front.blogs.blog_list',$data);
+    }
+
+    public function blog_details($id){
+
+        $blog = Blog::find($id);
+        if($blog != null){
+
+            $data['blog']=$blog;
+            return view('front.blogs.blog_details',$data);
+        }else{
+            abort('404');
+        }
     }
 }

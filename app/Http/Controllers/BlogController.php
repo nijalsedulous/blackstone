@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Category;
-
+use File;
 use Validator;
 
 class BlogController extends Controller
@@ -57,6 +57,11 @@ class BlogController extends Controller
         }
 
         $input = $request->all();
+
+        if(isset($input['blog_image'])){
+            $blog_image = $this->saveBlogImage($request);
+            $input['image_url'] = $blog_image;
+        }
         Blog::create($input);
 
         $request->session()->flash('message', 'Blog has been added successfully!');
@@ -111,9 +116,26 @@ class BlogController extends Controller
 
         $input = $request->all();
         $bg = Blog::find($id);
+        $old_blog_image =$bg->image_url;
         $bg->category_id=$input['category_id'];
         $bg->title=$input['title'];
         $bg->description=$input['description'];
+
+        if(isset($input['service_image'])){
+
+            $blog_image = $this->saveBlogImage($request);
+
+            //unlink previous image
+            $blog_image_path = $old_blog_image;
+
+            if(File::exists(public_path().$blog_image_path)) {
+                File::delete(public_path().$blog_image_path);
+            }
+
+            $bg->image_url=$blog_image;
+        }
+
+
         $bg->save();
 
         $request->session()->flash('message', 'Blog has been updated successfully!');
@@ -128,9 +150,30 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        Blog::where('id',$id)->delete();
+
+        $blog = Blog::where('id',$id);
+        $blog_image_path = $blog->first()->image_url;
+        if(File::exists(public_path().$blog_image_path)) {
+            File::delete(public_path().$blog_image_path);
+        }
+        $blog->delete();
 
         \Session::flash('message', 'Blog has been deleted successfully!');
         return redirect()->route('blogs.index');
+    }
+
+    public function saveBlogImage($request){
+
+        $blog_path = 'uploads/blogs/';
+        if(!File::exists($blog_path)) {
+            File::makeDirectory($blog_path, 0777, true, true);
+        }
+        $file_name = $request->file('blog_image')->getClientOriginalName();
+        $file_extension = $request->file('blog_image')->getClientOriginalExtension();
+        $unique_name = md5($file_name. time());
+        $new_file_name = $unique_name.".".$file_extension;
+        $request->file('blog_image')->move($blog_path, $new_file_name);
+        return "/".$blog_path.$new_file_name;
+
     }
 }

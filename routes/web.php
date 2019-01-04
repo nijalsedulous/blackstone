@@ -5,7 +5,13 @@ Route::get('properties', 'FrontController@properties')->name('properties');
 Route::get('property/{id}', 'FrontController@property_details')->name('property_details');
 Route::get('property/download_pdf/{id}', 'FrontController@download_pdf')->name('download_pdf');
 Route::post('property/store_contacts', 'FrontController@store_contacts')->name('store_contacts');
+Route::post('contact/save_contact', 'FrontController@save_contact')->name('save_contact');
+
 Route::get('contact-us', 'PageController@contact_us')->name('contact-us');
+Route::get('blog', 'FrontController@blog')->name('blog');
+Route::get('blog/{id}', 'FrontController@blog_details')->name('blog_details');
+
+
 
 
 
@@ -32,6 +38,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('blogs', 'BlogController');
         Route::resource('clients', 'ClientController');
         Route::resource('navigations', 'NavigationController');
+        Route::resource('contacts', 'ContactController');
+        Route::resource('pages', 'AdminPageController');
 
     });
 });

@@ -21,7 +21,7 @@
     </header>
 
     <!-- start: page -->
-    {!! Form::model($blog,['method' => 'PATCH', 'action' => ['BlogController@update', $blog->id ] ]) !!}
+    {!! Form::model($blog,['method' => 'PATCH', 'action' => ['BlogController@update', $blog->id ],'files'=>true ]) !!}
     {{csrf_field()}}
         <div class="row">
             <div class="col-md-12">
@@ -34,7 +34,7 @@
                     </header>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
 
                                 <div class="form-group @if ($errors->has('category_id')) has-error  @endif">
                                     <label class="col-sm-4 control-label"> Category: <span class="text-danger">*</span></label>
@@ -59,6 +59,8 @@
                                 </div>
 
 
+
+
                                 <div class="form-group @if ($errors->has('description')) has-error  @endif">
                                     <label class="col-sm-4 control-label"> Description: <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
@@ -67,6 +69,29 @@
                                     @if ($errors->has('description'))
                                             <label for="description" class="error">{{ $errors->first('description') }}</label>
                                         @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"> Image: </label>
+                                    <div class="col-sm-5">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="input-append">
+                                                <div class="uneditable-input">
+                                                    <i class="fa fa-file fileupload-exists"></i>
+                                                    <span class="fileupload-preview"></span>
+                                                </div>
+                                                <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select Image </span>
+																<input type="file" name="blog_image" />
+															</span>
+                                                <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <img src="{{$blog->image_url}}" style="width: 250px;">
                                     </div>
                                 </div>
 

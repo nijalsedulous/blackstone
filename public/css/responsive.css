@@ -81,5 +81,5 @@ header { border-bottom: none; }
 .peoperty_name { font-size: 32px; }
 }
 @media (max-width:992px) {
-.res_des { margin-top: 30px; }
+.res_des { margin-top: 30px; }.blog_text{padding:20px;}
 }

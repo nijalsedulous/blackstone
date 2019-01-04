@@ -20,27 +20,46 @@
                     </div>
                 </div>
             </div>
+            @if (Session::has('message'))
+                <div class="alert alert-success">
+                    <strong> {{ Session::get('message') }}</strong>
+                </div>
+            @endif
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    {{Form::open(['url' => '/contact/save_contact', 'method' => 'post'])}}
+                    {{csrf_field()}}
                     <div class="row contact-2">
                         <div class="col-md-6">
                             <div class="form-group name">
                                 <input type="text" name="name" class="form-control" placeholder="Name">
+                                @if ($errors->has('name'))
+                                    <div class="text-danger">Name field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group email">
                                 <input type="email" name="email" class="form-control" placeholder="Email">
+                                @if ($errors->has('email'))
+                                    <div class="text-danger">Email field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group subject">
                                 <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                @if ($errors->has('subject'))
+                                    <div class="text-danger">Subject field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group number">
                                 <input type="text" name="phone" class="form-control" placeholder="Number">
+                                @if ($errors->has('phone'))
+                                    <div class="text-danger">Phone field is required.</div>
+                                @endif
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -54,6 +73,7 @@
                             </div>
                         </div>
                     </div>
+                    {!! Form::close() !!}
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <ul class="contact_box">

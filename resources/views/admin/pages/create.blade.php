@@ -21,7 +21,7 @@
     </header>
 
     <!-- start: page -->
-    <form id="frmcourier" action="{{route('blogs.store')}}" class="form-horizontal form-bordered" method="POST" enctype="multipart/form-data">
+    <form id="frmcourier" action="{{route('blogs.store')}}" class="form-horizontal form-bordered" method="POST">
         {{csrf_field()}}
 
         <div class="row">
@@ -57,26 +57,6 @@
                                         @if ($errors->has('title'))
                                             <label for="title" class="error">{{ $errors->first('title') }}</label>
                                         @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-sm-4 control-label"> Image: </label>
-                                    <div class="col-sm-8">
-                                        <div class="fileupload fileupload-new" data-provides="fileupload">
-                                            <div class="input-append">
-                                                <div class="uneditable-input">
-                                                    <i class="fa fa-file fileupload-exists"></i>
-                                                    <span class="fileupload-preview"></span>
-                                                </div>
-                                                <span class="btn btn-default btn-file">
-																<span class="fileupload-exists">Change</span>
-																<span class="fileupload-new">Select Image </span>
-																<input type="file" name="blog_image" />
-															</span>
-                                                <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
 
