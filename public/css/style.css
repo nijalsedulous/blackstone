@@ -124,7 +124,7 @@ to { transform: scale(1.2) translateX(0); -webkit-transform: scale(1.2) translat
 /*---why--us---*/
 .why_us { background: #f3f4f5; padding: 80px 0; position: relative; z-index: 10; }
 .bg_flex { padding: 0; right: 0; position: absolute; top: 0px; height: 100%; overflow: hidden; z-index: 100; }
-.flex_holder { background-image: url(../image/why-u-right.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; position: absolute; top: 0; width: 100%; height: 100%; }
+.flex_holder { background-image: url(../images/why-u-right.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; position: absolute; top: 0; width: 100%; height: 100%; }
 .welcome { color: #383838; font-size: 24px; font-weight: 600; margin-bottom: 5px; }
 .pera { color: #1c1c1c; line-height: 24px; }
 .btn_black { background-color: #252525; border-radius: 3px; color: #fff !important; padding: 13px 35px; font-size: 16px; font-weight: 500; text-transform: capitalize; letter-spacing: 0.6px; border: none; }
@@ -134,7 +134,7 @@ to { transform: scale(1.2) translateX(0); -webkit-transform: scale(1.2) translat
 .btn_mt { margin-top: 40px; }
 .left_space { width: 6.25%; float: left; }
 /*---clients--*/
-.clients { background: #111111; padding: 80px 0 50px; background-image: url(../image/clients_bg.png); background-repeat: no-repeat; background-position: center; }
+.clients { background: #111111; padding: 80px 0 50px; background-image: url(../images/clients_bg.png); background-repeat: no-repeat; background-position: center; }
 .title.white { color: #fff; }
 .country { font-size: 18px; color: #fff; text-align: center; font-weight: 500; margin-bottom: 30px; margin-top: 15px; line-height: 24px; }
 .client_box { width: 12.5%; padding-left: 15px; padding-right: 15px; float: left; }
@@ -186,7 +186,7 @@ svg path, svg circle { }
 .footer ul, .footer-item ul { padding-left: 0px; list-style-type: none; }
 .footer .footer-inner .links li:hover { padding-left: 10px; transition: all 0.4s ease-in; }
 /*---contact--us--*/
-.inner_title_bg { background-image: url(../image/inner-title-bg.jpg); background-size: cover; height: 355px; background-position: center center; background-repeat: no-repeat; position: relative; }
+.inner_title_bg { background-image: url(../images/inner-title-bg.jpg); background-size: cover; height: 355px; background-position: center center; background-repeat: no-repeat; position: relative; }
 .inner_title_bg:before { position: absolute; content: ''; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.6); }
 .breadcrumb-area h1 { margin: 0 0 15px; font-weight: 700; text-transform: uppercase; color: #fff; font-size: 30px; text-align: center; }
 .breadcrumbs a, .breadcrumbs { color: #fff; text-align: center; font-size: 16px; }
@@ -209,7 +209,7 @@ svg path, svg circle { }
 .sub_footer .social-list li { display: inline-block; }
 .sub_footer .social-list li a { margin-left: 20px; color: #7c7e83; display: inline-block; }
 /*---property---details--*/
-.property_title_bg { background-image: url(../image/properti-image.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative; min-height: 700px; }
+.property_title_bg { background-image: url(../images/properti-image.jpg); background-size: cover; background-position: center center; background-repeat: no-repeat; position: relative; min-height: 700px; }
 .peoperty_name { font-size: 40px; font-weight: 700; color: #fff; bottom: 0px; position: absolute; }
 .pro_loctation { padding-left: 24px; font-size: 16px; font-weight: 500; position: relative; margin-bottom: 25px; }
 .pro_loctation i { position: absolute; left: 0; font-size: 20px; top: 1px; }
