@@ -1,7 +1,7 @@
 <header class="header">
     <div class="logo-container">
         <a href="../" class="logo">
-            <img src="/images/blackstone-logo.png" height="35" alt="BlackStone" />
+            <img src="/admin/images/Blackstone-black-logo.png" height="35" alt="BlackStone" />
         </a>
         <div class="visible-xs toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
             <i class="fa fa-bars" aria-label="Toggle sidebar"></i>

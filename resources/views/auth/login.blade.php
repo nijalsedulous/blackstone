@@ -6,7 +6,7 @@
     <section class="body-sign">
         <div class="center-sign">
             <a href="/" class="logo pull-left">
-                <img src="/images/blackstone-logo.png" height="54" alt="Black Stone" />
+                <img src="/admin/images/Blackstone-black-logo.png" height="54" alt="Black Stone" />
             </a>
 
             <div class="panel panel-sign">
