@@ -35,10 +35,10 @@
                         </div>
 
                         <div class="form-group mb-lg">
-                            <div class="clearfix">
-                                <label class="pull-left">Password</label>
-                                <a href="{{ route('password.request') }}" class="pull-right">Lost Password?</a>
-                            </div>
+                            {{--<div class="clearfix">--}}
+                                {{--<label class="pull-left">Password</label>--}}
+                                {{--<a href="{{ route('password.request') }}" class="pull-right">Lost Password?</a>--}}
+                            {{--</div>--}}
                             <div class="input-group input-group-icon">
                                 <input id="password" type="password" class="form-control input-lg{{ $errors->has('password') ? ' has-error' : '' }}" name="password" required>
                                 <span class="input-group-addon">

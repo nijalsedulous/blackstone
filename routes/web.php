@@ -22,6 +22,10 @@ Route::prefix('admin')->group(function () {
     Auth::routes();
     Route::group(['middleware' => array('auth')], function() {
         Route::get('properties/contacts', 'PropertyController@contacts')->name('properties.contacts');
+        Route::get('/profile/{id}', 'UserController@profile')->name('admin.profile');
+        Route::put('/profile/{id}', 'UserController@update_profile');
+        Route::get('/change_password', 'UserController@change_password')->name('admin.change_password');
+        Route::put('/update_password/{user_id}', 'UserController@updatePassword');
 
         Route::resource('properties', 'PropertyController');
         Route::resource('settings', 'SettingController');
