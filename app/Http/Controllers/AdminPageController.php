@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Page;
+use File;
 use Validator;
 
 
@@ -54,6 +55,10 @@ class AdminPageController extends Controller
         }
 
         $input = $request->all();
+        if(isset($input['page_image'])){
+            $page_image = $this->savePageImage($request);
+            $input['image_url'] = $page_image;
+        }
         Page::create($input);
 
         $request->session()->flash('message', 'Page has been added successfully!');
@@ -107,10 +112,26 @@ class AdminPageController extends Controller
 
         $input = $request->all();
         $page = Page::find($id);
+        $old_page_image =$page->image_url;
         $page->name=$input['name'];
         $page->content=$input['content'];
         $page->meta_title=$input['meta_title'];
         $page->meta_description=$input['meta_description'];
+
+
+        if(isset($input['page_image'])){
+
+            $page_image = $this->savePageImage($request);
+
+            //unlink previous image
+            $page_image_path = $old_page_image;
+
+            if(File::exists(public_path().$page_image_path)) {
+                File::delete(public_path().$page_image_path);
+            }
+
+            $page->image_url=$page_image;
+        }
 
         $page->save();
 
@@ -126,9 +147,30 @@ class AdminPageController extends Controller
      */
     public function destroy($id)
     {
-        Page::where('id',$id)->delete();
+
+        $page = Page::where('id',$id);
+        $page_image_path = $page->first()->image_url;
+        if(File::exists(public_path().$page_image_path)) {
+            File::delete(public_path().$page_image_path);
+        }
+        $page->delete();
 
         \Session::flash('message', 'Page has been deleted successfully!');
         return redirect()->route('pages.index');
+    }
+
+    public function savePageImage($request){
+
+        $page_path = 'uploads/pages/';
+        if(!File::exists($page_path)) {
+            File::makeDirectory($page_path, 0777, true, true);
+        }
+        $file_name = $request->file('page_image')->getClientOriginalName();
+        $file_extension = $request->file('page_image')->getClientOriginalExtension();
+        $unique_name = md5($file_name. time());
+        $new_file_name = $unique_name.".".$file_extension;
+        $request->file('page_image')->move($page_path, $new_file_name);
+        return "/".$page_path.$new_file_name;
+
     }
 }

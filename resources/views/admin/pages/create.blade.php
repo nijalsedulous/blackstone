@@ -21,7 +21,7 @@
     </header>
 
     <!-- start: page -->
-    <form id="frmcourier" action="{{route('pages.store')}}" class="form-horizontal form-bordered" method="POST">
+    <form id="frmcourier" action="{{route('pages.store')}}" class="form-horizontal form-bordered" method="POST" enctype="multipart/form-data">
         {{csrf_field()}}
 
         <div class="row">
@@ -64,6 +64,26 @@
                                         <textarea class="form-control" rows="5" id="meta_description" name="meta_description">{{old('meta_description')}}</textarea>
 
 
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"> Image: </label>
+                                    <div class="col-sm-8">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="input-append">
+                                                <div class="uneditable-input">
+                                                    <i class="fa fa-file fileupload-exists"></i>
+                                                    <span class="fileupload-preview"></span>
+                                                </div>
+                                                <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select Image </span>
+																<input type="file" name="page_image" />
+															</span>
+                                                <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 

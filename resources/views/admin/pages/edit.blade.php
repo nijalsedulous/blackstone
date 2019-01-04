@@ -21,7 +21,7 @@
     </header>
 
     <!-- start: page -->
-    {!! Form::model($page,['method' => 'PATCH', 'action' => ['AdminPageController@update', $page->id ] ]) !!}
+    {!! Form::model($page,['method' => 'PATCH', 'action' => ['AdminPageController@update', $page->id ],'files'=>true ]) !!}
         {{csrf_field()}}
 
         <div class="row">
@@ -64,6 +64,29 @@
                                         <textarea class="form-control" rows="5" id="meta_description" name="meta_description">{{$page->meta_description}}</textarea>
 
 
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"> Image: </label>
+                                    <div class="col-sm-5">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="input-append">
+                                                <div class="uneditable-input">
+                                                    <i class="fa fa-file fileupload-exists"></i>
+                                                    <span class="fileupload-preview"></span>
+                                                </div>
+                                                <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select Image </span>
+																<input type="file" name="page_image" />
+															</span>
+                                                <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <img src="{{$page->image_url}}" style="width: 200px;">
                                     </div>
                                 </div>
 
