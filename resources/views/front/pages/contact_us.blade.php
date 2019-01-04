@@ -57,16 +57,16 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <ul class="contact_box">
-                        <li> <i class="fa fa-map-marker icon_round" aria-hidden="true"></i><span class="office_add">OFFICE ADDRESS</span> <br/>519, level 5. Standard Chartered Tower Emaar Square. Downtown Burj Khalifa Dubai. U.A.E.</li>
-                        <li><i class="fa fa-envelope  icon_round" aria-hidden="true"></i><span class="office_add">PHONE NUMBER</span> <br/><a href="mailto:info@blackstone.com">info@blackstone.com</a> </li>
-                        <li><i class="fa fa-phone  icon_round" aria-hidden="true"></i><span class="office_add">EMAIL ADDRESS</span> <br/><a href="tel:+971526282552">+ 971526282552</a> </li>
+                        <li> <i class="fa fa-map-marker icon_round" aria-hidden="true"></i><span class="office_add">OFFICE ADDRESS</span> <br/>{!! $setting->address !!}</li>
+                        <li><i class="fa fa-envelope  icon_round" aria-hidden="true"></i><span class="office_add"> EMAIL ADDRESS</span> <br/><a href="mailto:{!! $setting->busniess_email !!}">{!! $setting->busniess_email !!}</a> </li>
+                        <li><i class="fa fa-phone  icon_round" aria-hidden="true"></i><span class="office_add">PHONE NUMBER</span> <br/><a href="tel:+{!! $setting->phone1 !!}">+ {!! $setting->phone1 !!}</a> </li>
 
                     </ul>
                 </div>
             </div>
         </div>
     </section>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d231281.63884529352!2d55.08766287470379!3d25.07559354644518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDubai+-+United+Arab+Emirates!5e0!3m2!1sen!2sin!4v1543983888154" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    {!! $setting->google_map !!}
 
 @endsection
 

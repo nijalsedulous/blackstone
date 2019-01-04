@@ -1,36 +1,29 @@
 @extends('layouts.front')
-@section('pageTitle', 'BlackStone')
-@section('metaTitle', 'BlackStone')
-@section('metaDescription', 'BlackStone')
+@section('pageTitle', $setting->site_name)
+@section('metaTitle', $setting->meta_title)
+@section('metaDescription', $setting->meta_description)
 
 @section('content')
 
 <div class="bnr_slider">
     <div id="demo" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
+            @foreach($banners as $bk1 => $banner)
+            <li data-target="#demo" data-slide-to="{{$bk1}}" @if($bk1 == 0)class="active" @endif></li>
+            @endforeach
+
         </ul>
         <div class="carousel-inner">
-            <div class="carousel-item active"> <img src="/images/main-bnner.jpg" alt="Los Angeles" class="d-block">
+            @foreach($banners as $bk => $banner)
+            <div class="carousel-item @if($bk == 0) active @endif">
+                <img src="{{$banner->image_url}}" alt="{!! $banner->title  !!}" class="d-block">
                 <div class="carousel-caption">
-                    <p>Your Property Manager</p>
-                    <h1>Your Property Manager</h1>
+                    <p>{!! $banner->title  !!}</p>
+                    <h1>{!! $banner->sub_title  !!}</h1>
                 </div>
             </div>
-            <div class="carousel-item"> <img src="/images/main-bnner2.jpg" alt="Chicago" class="d-block">
-                <div class="carousel-caption">
-                    <p>Your Property Manager</p>
-                    <h1>Your Property Manager</h1>
-                </div>
-            </div>
-            <div class="carousel-item"> <img src="/images/main-bnner3.jpg" alt="New York" class="d-block">
-                <div class="carousel-caption">
-                    <p>Your Property Manager</p>
-                    <h1>Your Property Manager</h1>
-                </div>
-            </div>
+            @endforeach
+
         </div>
         <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"><i class="fa fa-chevron-left" aria-hidden="true"></i></span> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"><i class="fa fa-chevron-right" aria-hidden="true"></i></span> </a> </div>
 </div>
@@ -46,52 +39,37 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden_4"> <img src="/images/globimg.png" class="img-fluid d-block img_mb30" alt="glob image" /> </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/home-icon.png" class="d-block" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
+                @foreach($services as $s_key1=> $service1)
+                    @if($s_key1 % 2 == 0)
+                    <div class="service_box">
+                        <div class="icon_left"><div class="icon_rd"><img src="{!! $service1->image !!}" class="d-block" alt="icon" /></div></div>
+                        <div class="icon_right">
+                            <h4 class="title_4">{!! $service1->name !!}</h4>
+                            <p>{!! $service1->description !!}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/icon2.png" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply dummy</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-                    </div>
-                </div>
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/icon3.png" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-                    </div>
-                </div>
+                    @endif
+                @endforeach
+
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden_1"> <img src="/images/globimg.png" class="img-fluid d-block img_mb30" alt="glob image" /> </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/icon4.png" class="img-fluid" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-                    </div>
-                </div>
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/icon2.png" class="img-fluid" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply dummy</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-                    </div>
-                </div>
-                <div class="service_box">
-                    <div class="icon_left"><div class="icon_rd"><img src="/images/icon3.png" class="img-fluid" alt="icon" /></div></div>
-                    <div class="icon_right">
-                        <h4 class="title_4">Lorem Ipsum is simply</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
-                    </div>
-                </div>
+
+                @foreach($services as $s_key2=> $service2)
+                    @if($s_key2 % 2 != 0)
+                        <div class="service_box">
+                            <div class="icon_left"><div class="icon_rd"><img src="{!! $service2->image !!}" class="d-block" alt="icon" /></div></div>
+                            <div class="icon_right">
+                                <h4 class="title_4">{!! $service2->name !!}</h4>
+                                <p>{!! $service2->description !!}</p>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+
             </div>
         </div>
     </div>
@@ -134,56 +112,14 @@
         </div>
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad">
-                <div class="client_box"> <img src="/images/United-kingdom-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">United Kingdom</p>
+                @foreach($clients as $client)
+                    <div class="client_box"> <img src="{{$client->country_flag}}" class="img-fluid" alt="{{$client->name}}" />
+                    <p class="country">{{$client->country_name}}</p>
                 </div>
-                <div class="client_box"> <img src="/images/Nigeria-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Nigeria</p>
-                </div>
-                <div class="client_box"> <img src="/images/Denmark-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Denmark</p>
-                </div>
-                <div class="client_box"> <img src="/images/india-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">India</p>
-                </div>
-                <div class="client_box"> <img src="/images/Hong-Kong-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Hong Kong</p>
-                </div>
-                <div class="client_box"> <img src="/images/UAE-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">UAE</p>
-                </div>
-                <div class="client_box"> <img src="/images/Kenya-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Kenya</p>
-                </div>
-                <div class="client_box"> <img src="/images/Pakistan-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Pakistan</p>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad">
-                <div class="left_space">&nbsp;</div>
-                <div class="client_box"> <img src="/images/Qatar-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Qatar</p>
-                </div>
-                <div class="client_box"> <img src="/images/Singapore-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Singapore</p>
-                </div>
-                <div class="client_box"> <img src="/images/United-staste-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">United States</p>
-                </div>
-                <div class="client_box"> <img src="/images/Canada-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Canada</p>
-                </div>
-                <div class="client_box"> <img src="/images/Chile-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Chile</p>
-                </div>
-                <div class="client_box"> <img src="/images/Japan-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Japan</p>
-                </div>
-                <div class="client_box"> <img src="/images/Russia-flag.jpg" class="img-fluid" alt="united kingdom" />
-                    <p class="country">Russia</p>
-                </div>
+                @endforeach
 
             </div>
+
         </div>
 </section>
 <section class="ptb8050">
@@ -281,36 +217,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="property-box"> <a href="properties-details.html" class="property-img" >
-                        <div class="property-thumbnail"> <img class="d-block w-100" src="/images/property-img.jpg" alt="properties"> </div>
+            @foreach($properties as $property)
+                <?php $property_image =$property->property_images->first();
+
+                ?>
+             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="property-box"> <a href="/property/{{$property->id}}" class="property-img" >
+                        <div class="property-thumbnail"> <img class="d-block w-100" style="height:215px;" src="{{$property_image->image_path}}" alt="properties"> </div>
                         <div class="property_detail">
-                            <h3 class="pro_name">Real Luxury Villa</h3>
-                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>123 Kathal St. Tampa City,</div>
-                            <p>North America</p>
+                            <h3 class="pro_name">{{$property->name}}</h3>
+                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$property->address}}</div>
+                            <p>{{$property->country->name}}</p>
                         </div>
                     </a> </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="property-box"> <a href="properties-details.html" class="property-img" >
-                        <div class="property-thumbnail"> <img class="d-block w-100" src="/images/property-img2.jpg" alt="properties"> </div>
-                        <div class="property_detail">
-                            <h3 class="pro_name">Buying A Best House</h3>
-                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>123 Kathal St. Tampa City,</div>
-                            <p>North America</p>
-                        </div>
-                    </a> </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="property-box"> <a href="properties-details.html" class="property-img" >
-                        <div class="property-thumbnail"> <img class="d-block w-100" src="/images/property-img.jpg" alt="properties"> </div>
-                        <div class="property_detail">
-                            <h3 class="pro_name">Selling Your Real House</h3>
-                            <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>123 Kathal St. Tampa City,</div>
-                            <p>North America</p>
-                        </div>
-                    </a> </div>
-            </div>
+            @endforeach
+
+
         </div>
     </div>
 </section>
