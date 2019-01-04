@@ -50,6 +50,7 @@
                 @endforeach
 
             </div>
+            <div style="text-align: center">{{ $properties->links() }}</div>
         </div>
     </section>
 

@@ -20,11 +20,11 @@ class FrontController extends Controller
         if(isset($request->country_id)){
             $properties= Property::where('is_active',1)
                                     ->where('country_id',$request->country_id)
-                                    ->get();
+                                    ->orderBy('created_at','desc')->paginate('9');
             $selected_country= $request->country_id;
 
         }else{
-            $properties= Property::where('is_active',1)->get();
+            $properties= Property::where('is_active',1)->orderBy('created_at','desc')->paginate('9');
 
         }
         $pro_countires = Property::where('is_active',1)->groupBy('country_id')->get(['country_id']);
@@ -130,7 +130,7 @@ class FrontController extends Controller
     }
 
     public function blog(){
-        $blogs= Blog::all();
+        $blogs= Blog::orderBy('created_at','desc')->paginate('10');
         $data['blogs']=$blogs;
         return view('front.blogs.blog_list',$data);
     }

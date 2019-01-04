@@ -70,7 +70,7 @@
             </table>
         </div>
 
-        {{--<div class="pull-right">{{ $expenses->links() }}</div>--}}
+        <div class="pull-right">{{ $properties->links() }}</div>
     </section>
     <!-- end: page -->
 

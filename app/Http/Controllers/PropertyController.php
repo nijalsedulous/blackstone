@@ -20,7 +20,7 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        $properties= Property::all();
+        $properties= Property::orderBy('created_at','desc')->paginate('15');
 
         $data['properties']=$properties;
 
@@ -232,7 +232,7 @@ class PropertyController extends Controller
 
     public function contacts(){
 
-        $property_contacts= Property_contact::all();
+        $property_contacts= Property_contact::orderBy('created_at','desc')->paginate('15');
         $data['property_contacts']=$property_contacts;
 
         return view('admin.properties.contacts',$data);

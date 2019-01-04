@@ -68,7 +68,7 @@
             </table>
         </div>
 
-        {{--<div class="pull-right">{{ $expenses->links() }}</div>--}}
+        <div class="pull-right">{{ $clients->links() }}</div>
     </section>
     <!-- end: page -->
 

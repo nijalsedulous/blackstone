@@ -35,6 +35,7 @@
 
 
         </div>
+        <div style="text-align: center">{{ $blogs->links() }}</div>
     </section>
 
 @endsection

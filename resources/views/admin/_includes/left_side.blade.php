@@ -25,12 +25,12 @@
 
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
-                    <li @if($action_name == 'dashboard')class="nav-active nav-expanded" @endif>
-                        <a href="/admin/dashboard">
-                            <i class="fa fa-home" aria-hidden="true"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
+                    {{--<li @if($action_name == 'dashboard')class="nav-active nav-expanded" @endif>--}}
+                        {{--<a href="/admin/dashboard">--}}
+                            {{--<i class="fa fa-home" aria-hidden="true"></i>--}}
+                            {{--<span>Dashboard</span>--}}
+                        {{--</a>--}}
+                    {{--</li>--}}
                     <li @if($controller_name == 'banners')class="nav-active nav-expanded" @endif>
                         <a href="/admin/banners">
 
