@@ -16,11 +16,11 @@ class AdminPageController extends Controller
      */
     public function index()
     {
-        $blogs= Page::all();
+        $pages= Page::all();
 
-        $data['blogs']=$blogs;
+        $data['pages']=$pages;
 
-        return view('admin.blogs.index',$data);
+        return view('admin.pages.index',$data);
     }
 
     /**
@@ -30,7 +30,7 @@ class AdminPageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -41,7 +41,23 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'content' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('pages.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $input = $request->all();
+        Page::create($input);
+
+        $request->session()->flash('message', 'Page has been added successfully!');
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -63,7 +79,8 @@ class AdminPageController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['page']=Page::find($id);
+        return view('admin.pages.edit',$data);
     }
 
     /**
@@ -75,7 +92,30 @@ class AdminPageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'content' => 'required',
+
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('pages.edit',$id)
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $input = $request->all();
+        $page = Page::find($id);
+        $page->name=$input['name'];
+        $page->content=$input['content'];
+        $page->meta_title=$input['meta_title'];
+        $page->meta_description=$input['meta_description'];
+
+        $page->save();
+
+        $request->session()->flash('message', 'Page has been updated successfully!');
+        return redirect()->route('pages.index');
     }
 
     /**
@@ -86,6 +126,9 @@ class AdminPageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Page::where('id',$id)->delete();
+
+        \Session::flash('message', 'Page has been deleted successfully!');
+        return redirect()->route('pages.index');
     }
 }

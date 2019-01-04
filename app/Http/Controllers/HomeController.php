@@ -7,6 +7,8 @@ use App\Models\Banner;
 use App\Models\Service;
 use App\Models\Client;
 use App\Models\Property;
+use App\Models\Page;
+
 
 
 class HomeController extends Controller
@@ -34,11 +36,13 @@ class HomeController extends Controller
         $properties= Property::where('is_active',1)
                                 ->orderBy('created_at','desc')
                                ->get()->take(3);
+        $page_content = Page::where('name','Why Us')->first();
 
         $data['properties']=$properties;
         $data['clients']=$clients;
         $data['services']=$services;
         $data['banners']=$banners;
+        $data['page_content']=$page_content;
         return view('home_page',$data);
     }
 }

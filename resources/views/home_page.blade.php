@@ -82,21 +82,22 @@
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                 <div class="title_mrg">
-                    <h2 class="title text-left">Why Us</h2>
+                    <h2 class="title text-left"> {!! $page_content->name !!}</h2>
                 </div>
-                <div class="">
-                    <div class="welcome">Welcome to Blackstone</div>
-                    <p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>
-                </div>
-                <div class="">
-                    <div class="welcome">We Provide Faster Service</div>
-                    <p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>
-                </div>
-                <div class="">
-                    <div class="welcome">We Provide Faster Service</div>
-                    <p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>
-                    <p class="btn_mt"><a class="btn_black">Read more</a></p>
-                </div>
+                {{--<div class="">--}}
+                    {{--<div class="welcome">Welcome to Blackstone</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                {{--</div>--}}
+                {{--<div class="">--}}
+                    {{--<div class="welcome">We Provide Faster Service</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                {{--</div>--}}
+                {{--<div class="">--}}
+                    {{--<div class="welcome">We Provide Faster Service</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                    {{--<p class="btn_mt"><a class="btn_black">Read more</a></p>--}}
+                {{--</div>--}}
+                {!! $page_content->content !!}
             </div>
         </div>
     </div>

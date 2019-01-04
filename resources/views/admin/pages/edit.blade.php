@@ -3,7 +3,7 @@
 @section('content')
 
     <header class="page-header">
-        <h2>Blog</h2>
+        <h2>Page</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -12,8 +12,8 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Blog </span></li>
-
+                <li><span>Page </span></li>
+                <li><span>Create</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
@@ -21,54 +21,65 @@
     </header>
 
     <!-- start: page -->
-    {!! Form::model($blog,['method' => 'PATCH', 'action' => ['BlogController@update', $blog->id ] ]) !!}
-    {{csrf_field()}}
+    {!! Form::model($page,['method' => 'PATCH', 'action' => ['AdminPageController@update', $page->id ] ]) !!}
+        {{csrf_field()}}
+
         <div class="row">
             <div class="col-md-12">
 
                 <section class="panel">
                     <header class="panel-heading">
 
-                        <h2 class="panel-title">Blog</h2>
+                        <h2 class="panel-title">Page</h2>
 
                     </header>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
 
-                                <div class="form-group @if ($errors->has('category_id')) has-error  @endif">
-                                    <label class="col-sm-4 control-label"> Category: <span class="text-danger">*</span></label>
+                                <div class="form-group @if ($errors->has('name')) has-error  @endif">
+                                    <label class="col-sm-4 control-label"> Name: <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        {!! Form::select('category_id', $categories, $blog->cateogry_id, ['class'=>'form-control mb-md','placeholder' => 'Select Category']); !!}
+                                        <input type="text" class="form-control" name="name" value="{{$page->name}}">
 
-                                        @if ($errors->has('category_id'))
-                                            <label for="category_id" class="error">{{ $errors->first('category_id') }}</label>
-                                        @endif
-                                    </div>
-                                </div>
-
-                                <div class="form-group @if ($errors->has('title')) has-error  @endif">
-                                    <label class="col-sm-4 control-label"> Title: <span class="text-danger">*</span></label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="title" value="{{$blog->title}}">
-
-                                        @if ($errors->has('title'))
-                                            <label for="title" class="error">{{ $errors->first('title') }}</label>
+                                        @if ($errors->has('name'))
+                                            <label for="name" class="error">{{ $errors->first('name') }}</label>
                                         @endif
                                     </div>
                                 </div>
 
 
-                                <div class="form-group @if ($errors->has('description')) has-error  @endif">
-                                    <label class="col-sm-4 control-label"> Description: <span class="text-danger">*</span></label>
+                                <div class="form-group ">
+                                    <label class="col-sm-4 control-label"> Meta Title:</label>
                                     <div class="col-sm-8">
-                                        <textarea class="summernote" name="description" data-plugin-summernote data-plugin-options='{ "height": 180, "codemirror": { "theme": "ambiance" } }'>{{$blog->description}}</textarea>
+                                        <input type="text" class="form-control" name="meta_title" value="{{$page->meta_title}}">
 
-                                    @if ($errors->has('description'))
-                                            <label for="description" class="error">{{ $errors->first('description') }}</label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"> Meta Description:</label>
+                                    <div class="col-sm-8">
+                                        <textarea class="form-control" rows="5" id="meta_description" name="meta_description">{{$page->meta_description}}</textarea>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group @if ($errors->has('content')) has-error  @endif">
+                                    <label class="col-sm-4 control-label"> Content: <span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <textarea class="summernote" name="content" data-plugin-summernote data-plugin-options='{ "height": 300, "codemirror": { "theme": "ambiance" } }'>{{$page->content}}</textarea>
+
+
+                                        @if ($errors->has('content'))
+                                            <label for="content" class="error">{{ $errors->first('content') }}</label>
                                         @endif
                                     </div>
                                 </div>
+
+
 
                             </div>
                         </div>

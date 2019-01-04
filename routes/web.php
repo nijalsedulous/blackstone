@@ -13,12 +13,6 @@ Route::get('blog/{id}', 'FrontController@blog_details')->name('blog_details');
 
 
 
-
-
-
-
-
-
 Route::get('/test', function () {
     echo \Hash::make('blackstone');
 });
