@@ -3,7 +3,7 @@
 @section('content')
 
     <header class="page-header">
-        <h2>Client</h2>
+        <h2>Country</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -12,7 +12,7 @@
                         <i class="fa fa-home"></i>
                     </a>
                 </li>
-                <li><span>Client </span></li>
+                <li><span>Country </span></li>
 
             </ol>
 
@@ -29,7 +29,7 @@
                 <section class="panel">
                     <header class="panel-heading">
 
-                        <h2 class="panel-title">Client</h2>
+                        <h2 class="panel-title">Country</h2>
 
                     </header>
                     <div class="panel-body">

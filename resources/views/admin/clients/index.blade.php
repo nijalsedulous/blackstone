@@ -3,7 +3,7 @@
 @section('content')
 
     <header class="page-header">
-        <h2>Manage Clients</h2>
+        <h2>Manage Countries</h2>
 
         <div class="right-wrapper pull-right">
             <ol class="breadcrumbs">
@@ -13,7 +13,7 @@
                     </a>
                 </li>
 
-                <li><span>Clients</span></li>
+                <li><span>Countries</span></li>
             </ol>
 
             <a class="sidebar-right-toggle" data-open="sidebar-right"></a>
@@ -30,8 +30,8 @@
     <section class="panel">
         <header class="panel-heading">
 
-            <a href="{{route('clients.create')}}" class="btn btn-primary pull-right">Create Client</a>
-            <h2 class="panel-title">Manage Clients</h2>
+            <a href="{{route('clients.create')}}" class="btn btn-primary pull-right">Create Country</a>
+            <h2 class="panel-title">Manage Countries</h2>
         </header>
         <div class="panel-body">
             <table class="table table-no-more table-bordered table-striped mb-none">

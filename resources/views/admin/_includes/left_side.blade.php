@@ -65,7 +65,7 @@
                         <a href="/admin/clients">
 
                             <i class="fa fa-bell" aria-hidden="true"></i>
-                            <span>Our Clients</span>
+                            <span>Countries</span>
                         </a>
 
                     </li>
