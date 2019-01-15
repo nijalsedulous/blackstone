@@ -14,6 +14,11 @@
     {!! Html::style("/css/bootstrap.min.css") !!}
     {!! Html::style("/css/style.css") !!}
     {!! Html::style("/css/responsive.css") !!}
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
     @yield('styles')
 
 </head>
@@ -32,6 +37,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 {!! Html::script("/js/bootstrap.min.js") !!}
 {!! Html::script("/js/custom.js") !!}
+
+{!! Html::script("/js/jquery.validate.js") !!}
+
 @yield('scripts')
 
 </body>

@@ -139,7 +139,7 @@
                     <strong> {{ Session::get('message') }}</strong>
                 </div>
             @endif
-            {{Form::open(['url' => 'property/store_contacts/', 'method' => 'post'])}}
+            {{Form::open(['url' => 'property/store_contacts/', 'method' => 'post','id'=>'contactFrom'])}}
             {{csrf_field()}}
             <input type="hidden" name="property_id" value="{{$property->id}}">
             <div class="row">
@@ -147,7 +147,7 @@
                     <div class="row contact-2">
                         <div class="col-md-6">
                             <div class="form-group name">
-                                <input type="text" name="name" class="form-control" placeholder="Name">
+                                <input type="text" name="name" class="form-control" placeholder="Name" required>
                                 @if ($errors->has('name'))
                                 <div class="text-danger">Name field is required.</div>
                                 @endif
@@ -155,7 +155,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group email">
-                                <input type="email" name="email" class="form-control" placeholder="Email">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                                 @if ($errors->has('email'))
                                     <div class="text-danger">Email field is required.</div>
                                 @endif
@@ -163,7 +163,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group subject">
-                                <input type="text" name="subject" class="form-control" placeholder="Subject">
+                                <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                 @if ($errors->has('subject'))
                                     <div class="text-danger">Subject field is required.</div>
                                 @endif
@@ -171,7 +171,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group number">
-                                <input type="text" name="phone" class="form-control" placeholder="Number">
+                                <input type="text" name="phone" class="form-control" placeholder="Number" required>
                                 @if ($errors->has('phone'))
                                     <div class="text-danger">Phone field is required.</div>
                                 @endif
@@ -193,5 +193,44 @@
             {!! Form::close() !!}
         </div>
     </section>
+
+@endsection
+
+
+
+@section('scripts')
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+
+            $("#contactFrom").validate({
+                rules: {
+                    name: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    subject: "required",
+                    phone: "required",
+
+                },
+                messages: {
+                    name: "Please enter your name",
+                    email: "Please enter a valid email address",
+                    subject: "Please enter the subject",
+                    phone: "Please enter the number"
+
+                }
+            });
+
+
+
+        });
+
+
+
+    </script>
 
 @endsection

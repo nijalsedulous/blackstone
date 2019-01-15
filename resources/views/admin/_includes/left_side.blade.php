@@ -39,13 +39,34 @@
                         </a>
                     </li>
 
-                    <li @if($controller_name == 'blogs')class="nav-active nav-expanded" @endif>
-                        <a href="/admin/blogs">
+
+                    <?php $nav_array = ['categories','blogs']; ?>
+
+                    <li class="nav-parent @if(in_array($controller_name, $nav_array))nav-expanded nav-active @endif">
+                        <a>
                             <i class="fa fa-tasks" aria-hidden="true"></i>
                             <span>Blogs</span>
                         </a>
+                        <ul class="nav nav-children">
 
+                            <li @if($controller_name == 'categories')class="nav-active" @endif>
+                                <a href="/admin/categories">
+                                  Blog Categories
+                                </a>
+                            </li>
+
+                            <li @if($controller_name == 'blogs')class="nav-active nav-expanded" @endif>
+                                <a href="/admin/blogs">
+                                    Blogs
+                                </a>
+
+                            </li>
+
+
+                        </ul>
                     </li>
+
+
 
                     <li @if($controller_name == 'contacts')class="nav-active nav-expanded" @endif>
                         <a href="/admin/contacts">
@@ -115,23 +136,6 @@
                             <span>Social Media</span>
                         </a>
 
-                    </li>
-                    <?php $nav_array = ['categories','countries']; ?>
-
-                    <li class="nav-parent @if(in_array($controller_name, $nav_array))nav-expanded nav-active @endif">
-                        <a>
-                            <i class="fa fa-database" aria-hidden="true"></i>
-                            <span>Masters</span>
-                        </a>
-                        <ul class="nav nav-children">
-
-                            <li @if($controller_name == 'categories')class="nav-active" @endif>
-                                <a href="/admin/categories">
-                                    Categories
-                                </a>
-                            </li>
-
-                        </ul>
                     </li>
 
                 </ul>

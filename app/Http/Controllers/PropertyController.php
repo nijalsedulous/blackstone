@@ -64,6 +64,7 @@ class PropertyController extends Controller
         $property = new Property();
         $property->country_id = $input['country_id'];
         $property->name = $input['name'];
+        $property->slug_name = strtolower(str_replace(" ","-",$input['name']));
         $property->address = $input['address'];
         $property->description = $input['property_description'];
         $property->video_url = $input['video_url'];
@@ -135,6 +136,7 @@ class PropertyController extends Controller
         if($property != null){
             $property->country_id = $input['country_id'];
             $property->name = $input['name'];
+            $property->slug_name = strtolower(str_replace(" ","-",$input['name']));
             $property->address = $input['address'];
             $property->description = $input['property_description'];
             $property->video_url = $input['video_url'];
@@ -173,6 +175,14 @@ class PropertyController extends Controller
 
         \Session::flash('message', 'Property has been deleted successfully!');
         return redirect()->route('properties.index');
+    }
+
+    public function delete_contact($id){
+
+        Property_contact::where('id',$id)->delete();
+        \Session::flash('message', 'Contact has been deleted successfully!');
+        return redirect()->route('properties.contacts');
+
     }
 
     public function savePropertyPdf($propertyId,$request){
@@ -237,5 +247,58 @@ class PropertyController extends Controller
 
         return view('admin.properties.contacts',$data);
 
+    }
+
+
+    public function getPropertyContacts(Request $request){
+        $input = $request->all();
+        $search_key = $input['searchTerm'];
+        $contacts = Property_contact::where('name','like',"%{$search_key}%")
+            ->orderBy('name','asc')->get();
+        $contact_data=[];
+        foreach ($contacts as $contact){
+            $temp=[];
+            $temp['id']= $contact->id;
+            $temp['text']= $contact->name;
+            $contact_data[]=$temp;
+        }
+        return $contact_data;
+    }
+
+
+    public function searchContact(Request $request){
+        $input =$request->all();
+
+        $contact_id = isset($input['contact_id'])?$input['contact_id']:'';
+        $from_date = isset($input['from_date'])?date('Y-m-d',strtotime($input['from_date'])):'';
+        $end_date = isset($input['end_date'])?date('Y-m-d',strtotime($input['end_date'])):'';
+
+        if($contact_id > 0){
+
+            $contacts= Property_contact::where('property_contacts.id',$contact_id)
+                ->OrderBy('created_at','desc')->paginate('15');
+            $input['contact_name']= Property_contact::where('property_contacts.id',$contact_id)->first()->name;
+
+
+        }else if($from_date !="" && $end_date != ""){
+            $contacts= Property_contact::whereDate('created_at','>=', $from_date)
+                ->whereDate('created_at', '<=',$end_date)
+                ->OrderBy('created_at','desc')->paginate('15');
+
+        }else if($contact_id > 0 && $from_date !="" && $end_date != "") {
+
+            $contacts = Property_contact::whereDate('created_at', '>=', $from_date)
+                ->whereDate('created_at', '<=', $end_date)
+                ->where('property_contacts.id', $contact_id)
+                ->OrderBy('created_at', 'desc')->paginate('15');
+        }else{
+            $contacts= Property_contact::orderBy('created_at','desc')->paginate('15');
+        }
+
+        $data['property_contacts']=$contacts;
+
+
+        $data['input_data']=$input;
+        return view('admin.properties.contacts',$data);
     }
 }

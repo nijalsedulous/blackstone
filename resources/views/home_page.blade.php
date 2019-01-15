@@ -107,7 +107,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="title_mrg">
-                    <h2 class="title white">We Serve Clients Around The World</h2>
+                    <h2 class="title white"><a href="#" style="color: #FFFFFF">We Serve Clients Around The World</a></h2>
                 </div>
             </div>
         </div>
@@ -223,7 +223,7 @@
 
                 ?>
              <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                <div class="property-box"> <a href="/property/{{$property->id}}" class="property-img" >
+                <div class="property-box"> <a href="/property/{{$property->slug_name}}" class="property-img" >
                         <div class="property-thumbnail"> <img class="d-block w-100" style="height:215px;" src="{{$property_image->image_path}}" alt="properties"> </div>
                         <div class="property_detail">
                             <h3 class="pro_name">{{$property->name}}</h3>

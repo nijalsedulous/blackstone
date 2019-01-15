@@ -2,7 +2,7 @@
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('properties', 'FrontController@properties')->name('properties');
-Route::get('property/{id}', 'FrontController@property_details')->name('property_details');
+Route::get('property/{slug_name}', 'FrontController@property_details')->name('property_details');
 Route::get('property/download_pdf/{id}', 'FrontController@download_pdf')->name('download_pdf');
 Route::post('property/store_contacts', 'FrontController@store_contacts')->name('store_contacts');
 Route::post('contact/save_contact', 'FrontController@save_contact')->name('save_contact');
@@ -26,6 +26,10 @@ Route::prefix('admin')->group(function () {
         Route::put('/profile/{id}', 'UserController@update_profile');
         Route::get('/change_password', 'UserController@change_password')->name('admin.change_password');
         Route::put('/update_password/{user_id}', 'UserController@updatePassword');
+        Route::post('/search_contact','ContactController@searchContact')->name('contacts.search_contact');
+        Route::post('/property_search_contact','PropertyController@searchContact')->name('properties.property_search_contact');
+        Route::delete('/delete_contact/{id}','PropertyController@delete_contact')->name('properties.delete_contact');
+
 
         Route::resource('properties', 'PropertyController');
         Route::resource('settings', 'SettingController');

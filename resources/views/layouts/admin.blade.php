@@ -35,6 +35,8 @@
 
     {!! Html::style("/admin/vendor/summernote/summernote-bs3.css") !!}
 
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css' rel='stylesheet' type='text/css'>
+
 
 <!-- Theme CSS -->
 
@@ -104,6 +106,8 @@
 {!! Html::script("/admin/vendor/bootstrap-fileupload/bootstrap-fileupload.min.js") !!}
 
     {!! Html::script("/admin/vendor/summernote/summernote.js") !!}
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js'></script>
+
 
 
 

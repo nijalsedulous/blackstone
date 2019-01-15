@@ -37,7 +37,7 @@
 
                     ?>
                      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="property-box"> <a href="/property/{{$property->id}}" class="property-img" >
+                            <div class="property-box"> <a href="/property/{{$property->slug_name}}" class="property-img" >
                                     <div class="property-thumbnail"> <img class="d-block w-100" style="height:215px;" src="{{$property_image->image_path}}" alt="{{$property->name}}"> </div>
                                     <div class="property_detail">
                                         <h3 class="pro_name">{{$property->name}}</h3>

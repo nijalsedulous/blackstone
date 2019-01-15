@@ -35,13 +35,13 @@ class FrontController extends Controller
         return view('front.properties.properties_list',$data);
     }
 
-    public function property_details($id){
+    public function property_details($slug_name){
 
-        $property = Property::find($id);
+        $property = Property::where('slug_name',$slug_name)->first();
         if($property != null){
             $similar_properties = Property::where('is_active',1)
                                             ->where('country_id',$property->country_id)
-                                            ->where('id','<>',$id)
+                                            ->where('id','<>',$property->id)
                                             ->get();
 
             $data['similar_properties'] = $similar_properties;
@@ -67,6 +67,7 @@ class FrontController extends Controller
     public function store_contacts(Request $request){
 
         $property_id = $request->property_id;
+        $property = Property::find($property_id);
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
@@ -76,7 +77,7 @@ class FrontController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/property/'.$property_id)
+            return redirect('/property/'.$property->slug_name)
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -93,7 +94,7 @@ class FrontController extends Controller
         $property_contact->save();
 
         $request->session()->flash('message', 'Property Contact has been added successfully!');
-        return redirect('/property/'.$property_id);
+        return redirect('/property/'.$property->slug_name);
 
     }
 
