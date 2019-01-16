@@ -8,6 +8,10 @@ Route::post('property/store_contacts', 'FrontController@store_contacts')->name('
 Route::post('contact/save_contact', 'FrontController@save_contact')->name('save_contact');
 
 Route::get('contact-us', 'PageController@contact_us')->name('contact-us');
+Route::get('about-us', 'PageController@about_us')->name('about-us');
+Route::get('thank-you', 'PageController@thank_you')->name('thank-you');
+
+
 Route::get('blog', 'FrontController@blog')->name('blog');
 Route::get('blog/{id}', 'FrontController@blog_details')->name('blog_details');
 
@@ -42,6 +46,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('navigations', 'NavigationController');
         Route::resource('contacts', 'ContactController');
         Route::resource('pages', 'AdminPageController');
+        Route::resource('teams', 'TeamController');
+
 
     });
 });

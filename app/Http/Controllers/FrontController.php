@@ -94,7 +94,7 @@ class FrontController extends Controller
         $property_contact->save();
 
         $request->session()->flash('message', 'Property Contact has been added successfully!');
-        return redirect('/property/'.$property->slug_name);
+        return redirect('/thank-you');
 
     }
 
@@ -126,7 +126,7 @@ class FrontController extends Controller
         $contact->save();
 
         $request->session()->flash('message', 'Contact has been added successfully!');
-        return redirect('/contact-us');
+        return redirect('/thank-you');
 
     }
 

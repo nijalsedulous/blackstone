@@ -98,6 +98,14 @@
 
                     </li>
 
+                    <li @if($controller_name == 'teams')class="nav-active nav-expanded" @endif>
+                        <a href="/admin/teams">
+                            <i class="fa fa-group" aria-hidden="true"></i>
+                            <span>Our Teams</span>
+                        </a>
+
+                    </li>
+
                     <li @if($controller_name == 'pages')class="nav-active nav-expanded" @endif>
                         <a href="/admin/pages">
                             <i class="fa fa-copy" aria-hidden="true"></i>
