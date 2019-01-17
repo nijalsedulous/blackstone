@@ -54,7 +54,7 @@
                 @endforeach
 
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden_1"> <img src="/images/globimg.png" class="img-fluid d-block img_mb30" alt="glob image" /> </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 hidden_1"> <img src="/images/globe_spinning.gif" class="img-fluid d-block img_mb30" alt="glob image" /> </div>
 
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 
