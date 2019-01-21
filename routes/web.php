@@ -13,7 +13,7 @@ Route::get('thank-you', 'PageController@thank_you')->name('thank-you');
 
 
 Route::get('blog', 'FrontController@blog')->name('blog');
-Route::get('blog/{id}', 'FrontController@blog_details')->name('blog_details');
+Route::get('blog/{slug_name}', 'FrontController@blog_details')->name('blog_details');
 
 
 
@@ -33,6 +33,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/search_contact','ContactController@searchContact')->name('contacts.search_contact');
         Route::post('/property_search_contact','PropertyController@searchContact')->name('properties.property_search_contact');
         Route::delete('/delete_contact/{id}','PropertyController@delete_contact')->name('properties.delete_contact');
+        Route::post('/search_property','PropertyController@index')->name('properties.search_property');
+        Route::get('/properties/delete_property_image/{property_id}/{image_id}', 'PropertyController@deletePropertyImage')->name('properties.delete_image');
 
 
         Route::resource('properties', 'PropertyController');

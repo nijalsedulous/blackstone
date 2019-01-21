@@ -15,10 +15,10 @@
         <div class="container">
             <div class="top-headings">
                 <h3 class="text-center">Thank You</h3>
-                <p class="text-center">{!! $page_content->content !!}</p>
+                <span class="text-center">{!! $page_content->content !!}</span>
             </div>
             <div class="text-center">
-                <a href="/" class="btn_black">Bck To Home</a>
+                <a href="/" class="btn_black">Back To Home</a>
             </div>
         </div>
     </section>

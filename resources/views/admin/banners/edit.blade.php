@@ -75,6 +75,8 @@
                                             <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                         </div>
                                     </div>
+                                    <label for="sub_title" class="error">Image size is required (eg: 1200X628)</label>
+
                                 </div>
                                 <div class="col-sm-2">
                                     <img src="{{$banner->image_url}}" style="width: 300px;">

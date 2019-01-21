@@ -101,6 +101,7 @@ class SettingController extends Controller
             $setting->google_map = $input['google_map'];
             $setting->meta_title = $input['meta_title'];
             $setting->meta_description = $input['meta_description'];
+            $setting->service_title = $input['service_title'];
             if(isset($input['site_logo'])){
               $logo_url = $this->saveSiteLogo($request);
                 $setting->logo = $logo_url;

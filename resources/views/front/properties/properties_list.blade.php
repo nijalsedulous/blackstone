@@ -64,7 +64,7 @@
         function filter_property(obj){
 
             if(obj.value != ""){
-                window.location.href = '/properties?country_id='+obj.value;
+                window.location.href = '/properties?country='+obj.value.toLowerCase();
             }
         }
 

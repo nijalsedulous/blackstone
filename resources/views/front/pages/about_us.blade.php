@@ -23,12 +23,43 @@
                         <p class="about_pera mrg_t_20">
                             {!! $page_content->content !!}
                         </p>
-                        <p class="btn_mt"><a href="#" class="btn_black">Read More</a></p>
+                        {{--<p class="btn_mt"><a href="#" class="btn_black">Read More</a></p>--}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <section class="why_us res_top">
+        <div class="col-lg-6 col-md-6 col-sm-12 bg_flex">
+            <div class="flex_holder" style="background-image: {{$why_us_content->image_url}}"></div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <div class="title_mrg">
+                        <h2 class="title text-left"> {!! $why_us_content->name !!}</h2>
+                    </div>
+                    {{--<div class="">--}}
+                    {{--<div class="welcome">Welcome to Blackstone</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="">--}}
+                    {{--<div class="welcome">We Provide Faster Service</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                    {{--</div>--}}
+                    {{--<div class="">--}}
+                    {{--<div class="welcome">We Provide Faster Service</div>--}}
+                    {{--<p class="pera">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly</p>--}}
+                    {{--<p class="btn_mt"><a class="btn_black">Read more</a></p>--}}
+                    {{--</div>--}}
+                    {!! $why_us_content->content !!}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     <section class="ptb80 gray_bg">
         <div class="container">
             <div class="row">

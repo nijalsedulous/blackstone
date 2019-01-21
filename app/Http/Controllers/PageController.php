@@ -26,6 +26,7 @@ class PageController extends Controller
         $teams= Team::all();
         $data['teams']=$teams;
         $data['page_content']=$page_content;
+        $data['why_us_content']=Page::where('name','Why Us')->first();
         $data['properties']=$properties;
 
         return view('front.pages.about_us',$data);

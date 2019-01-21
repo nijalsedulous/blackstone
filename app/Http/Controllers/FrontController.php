@@ -17,11 +17,12 @@ class FrontController extends Controller
     public function properties(Request $request){
 
         $selected_country="";
-        if(isset($request->country_id)){
+        if(isset($request->country)){
+           $cid = Country::where('name',ucfirst($request->country))->first();
             $properties= Property::where('is_active',1)
-                                    ->where('country_id',$request->country_id)
+                                    ->where('country_id',$cid->id)
                                     ->orderBy('created_at','desc')->paginate('9');
-            $selected_country= $request->country_id;
+            $selected_country= ucfirst($request->country);
 
         }else{
             $properties= Property::where('is_active',1)->orderBy('created_at','desc')->paginate('9');
@@ -30,7 +31,7 @@ class FrontController extends Controller
         $pro_countires = Property::where('is_active',1)->groupBy('country_id')->get(['country_id']);
 
         $data['properties']=$properties;
-        $data['countries']=Country::whereIn('id',$pro_countires)->pluck('name', 'id')->toArray();
+        $data['countries']=Country::whereIn('id',$pro_countires)->pluck('name', 'name')->toArray();
         $data['selected_country']=$selected_country;
         return view('front.properties.properties_list',$data);
     }
@@ -136,9 +137,9 @@ class FrontController extends Controller
         return view('front.blogs.blog_list',$data);
     }
 
-    public function blog_details($id){
+    public function blog_details($slug_name){
 
-        $blog = Blog::find($id);
+        $blog = Blog::where('slug_name',$slug_name)->first();
         if($blog != null){
 
             $data['blog']=$blog;

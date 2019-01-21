@@ -21,12 +21,12 @@
                         <img src="{{$blog->image_url}}" class="img-fluid d-block" alt="blog image" /> </div>
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <div class="blog_text">
-                            <div class="welcome">{{$blog->title}}</div>
+                            <div class="welcome"><a href="/blog/{{$blog->slug_name}}" style="color:#383838;">{{$blog->title}}</a></div>
                             <div class="post_meta">
                                 <span><a href="#"><i class="fa fa-calendar"></i> {{date('d-M-Y',strtotime($blog->created_at))}} </a></span>
-                                <span><a href="#"><i class="fa fa-archive"></i> {{$blog->category->name}}</a></span></div>
+                                <span><i class="fa fa-archive"></i> {{$blog->category->name}}</span></div>
                             <p class="blog_pera">{!! str_limit($blog->description,350,'...')  !!}</p>
-                            <p><a href="/blog/{{$blog->id}}" class="btn_black">Read more</a></p>
+                            <p><a href="/blog/{{$blog->slug_name}}" class="btn_black">Read more</a></p>
                         </div>
                     </div>
                 </div>

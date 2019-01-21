@@ -20,6 +20,12 @@
         </div>
     </header>
 
+    @if (Session::has('message'))
+        <div class="alert alert-success">
+            <strong> {{ Session::get('message') }}</strong>
+        </div>
+    @endif
+
     <!-- start: page -->
     {!! Form::model($property,['method' => 'PATCH', 'action' => ['PropertyController@update', $property->id ],'files' => true ]) !!}
     {{csrf_field()}}
@@ -165,11 +171,16 @@
                         <h2 class="panel-title">Property Images</h2>
                     </header>
                     <div class="panel-body">
-                        <div class="popup-gallery">
+                        <div class="popup-gallery1">
                             @foreach($property->property_images as $pi)
-                            <a class="pull-left mb-xs mr-xs" href="{{$pi->image_path}}" title="{{$property->name}}">
+                            <a class="pull-left mb-xs mr-xs" href="javascript:void(0);" title="{{$property->name}}">
                                 <div class="img-responsive">
-                                    <img src="{{$pi->image_path}}" width="105">
+
+                                    <div class="img-wrap">
+                                        <span class="close">&times;</span>
+                                        <img src="{{$pi->image_path}}" style="width: 200px; height: 100px;" data-id="{{$pi->id}}">
+                                    </div>
+
                                 </div>
                             </a>
                             @endforeach
@@ -234,7 +245,7 @@
 @section('scripts')
 
     <script type="text/javascript">
-
+            var property_id = "{!! $property->id !!}"
         jQuery(document).ready(function($) {
 
 
@@ -245,6 +256,21 @@
 
             $("body").on("click",".btn-danger",function(){
                 $(this).parents(".control-group").remove();
+            });
+
+
+            $('.img-wrap .close').on('click', function() {
+                var id = $(this).closest('.img-wrap').find('img').data('id');
+
+
+                var status= confirm('Are you sure want to delete this Image?');
+                if(status == true){
+
+                   window.location.href = '/admin/properties/delete_property_image/'+property_id+'/'+id;
+                }else{
+                    return false;
+                }
+
             });
 
         });

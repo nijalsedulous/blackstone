@@ -33,7 +33,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="title_mrg">
                     <h2 class="title">Our Services</h2>
-                    <p class="title_p">We Provide Services</p>
+                    <p class="title_p">{{$setting->service_title}}</p>
                 </div>
             </div>
         </div>
@@ -76,7 +76,7 @@
 </section>
 <section class="why_us res_top">
     <div class="col-lg-6 col-md-6 col-sm-12 bg_flex">
-        <div class="flex_holder"></div>
+        <div class="flex_holder" style="background-image: {{$page_content->image_url}}"></div>
     </div>
     <div class="container">
         <div class="row">
@@ -114,8 +114,10 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad">
                 @foreach($clients as $client)
+                    <a href="/properties?country={{strtolower($client->country_name)}}">
                     <div class="client_box"> <img src="{{$client->country_flag}}" class="img-fluid" alt="{{$client->name}}" />
                     <p class="country">{{$client->country_name}}</p>
+                    </a>
                 </div>
                 @endforeach
 

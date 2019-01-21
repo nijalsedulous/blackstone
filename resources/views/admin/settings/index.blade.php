@@ -96,6 +96,13 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label"> Service Title: </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="service_title" value="{{$setting->service_title}}">
+                                    </div>
+                                </div>
+
                             </div>
                             <div class="col-md-6">
 

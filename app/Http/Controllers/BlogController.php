@@ -61,6 +61,7 @@ class BlogController extends Controller
         if(isset($input['blog_image'])){
             $blog_image = $this->saveBlogImage($request);
             $input['image_url'] = $blog_image;
+            $input['slug_name'] = strtolower(str_replace(" ","-",$input['title']));
         }
         Blog::create($input);
 
@@ -119,6 +120,8 @@ class BlogController extends Controller
         $old_blog_image =$bg->image_url;
         $bg->category_id=$input['category_id'];
         $bg->title=$input['title'];
+        $bg->slug_name = strtolower(str_replace(" ","-",$input['title']));
+
         $bg->description=$input['description'];
 
         if(isset($input['service_image'])){

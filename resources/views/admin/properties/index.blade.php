@@ -20,6 +20,50 @@
         </div>
     </header>
 
+    <section class="panel">
+        <div class="panel-body">
+            <form id="frmproperty" action="{{route('properties.search_property')}}" class="" method="POST" >
+                {{csrf_field()}}
+                <div class="row">
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Property Name</label>
+                            <?php $property_name ="";
+                            if(isset($input_data) && isset($input_data['property_name'])){
+                                $property_name = $input_data['property_name'];
+                            }
+                            ?>
+                            <input type="text" name="property_name" class="form-control" value="{{$property_name}}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="control-label">Country</label>
+
+                            <?php $country_id =null;
+                            if(isset($input_data) && isset($input_data['country_id'])){
+                                $country_id = $input_data['country_id'];
+                            }
+                            ?>
+                            {{Form::select('country_id', $countries, $country_id, ['placeholder' => 'Select Conuntry','class'=>'form-control'])}}
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-3">
+                        <div class="form-group" style="margin-top: 25px;">
+                            <button type="submit" class="btn btn-success" ><i class="fa fa-search"></i> Search</button>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </section>
+
     @if (Session::has('message'))
         <div class="alert alert-success">
             <strong> {{ Session::get('message') }}</strong>

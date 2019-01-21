@@ -18,11 +18,41 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $properties= Property::orderBy('created_at','desc')->paginate('15');
 
+        $input =$request->all();
+        $property_name = isset($input['property_name'])?$input['property_name']:'';
+        $country_id = isset($input['country_id'])?$input['country_id']:'';
+        if($country_id > 0){
+            $properties= Property::where('country_id',$country_id)
+                                  ->orderBy('created_at','desc')
+                                  ->paginate('15');
+
+        }else if(!empty($property_name)){
+
+            $properties= Property::where('name','like',"%{$property_name}%")
+                                 ->orderBy('created_at','desc')
+                                 ->paginate('15');
+
+        }else if($country_id > 0 && $property_name !=""){
+
+            $properties= Property::where('country_id',$country_id)
+                                   ->where('name','like',"%{$property_name}%")
+                ->orderBy('created_at','desc')
+                ->paginate('15');
+
+
+        }else{
+            $properties= Property::orderBy('created_at','desc')->paginate('15');
+
+        }
+
+
+        $pro_countires = Property::groupBy('country_id')->get(['country_id']);
+        $data['countries']=Country::whereIn('id',$pro_countires)->pluck('name', 'id')->toArray();
         $data['properties']=$properties;
+        $data['input_data']=$input;
 
         return view('admin.properties.index',$data);
     }
@@ -166,6 +196,7 @@ class PropertyController extends Controller
     public function destroy($id)
     {
          Property_image::where('property_id',$id)->delete();
+         Property_contact::where('property_id',$id)->delete();
          Property::where('id',$id)->delete();
         $directory ='uploads/properties/'.$id;
         if(File::exists($directory)) {
@@ -300,5 +331,20 @@ class PropertyController extends Controller
 
         $data['input_data']=$input;
         return view('admin.properties.contacts',$data);
+    }
+
+    public function deletePropertyImage($property_id,$image_id){
+
+
+        $property_image = Property_image::where('id',$image_id)
+                                          ->where('property_id',$property_id);
+        $pro_image_path = $property_image->first()->image_path;
+        if(File::exists(public_path().$pro_image_path)) {
+            File::delete(public_path().$pro_image_path);
+        }
+        $property_image->delete();
+
+        \Session::flash('message', 'Property Image has been deleted successfully!');
+        return redirect()->route('properties.edit',$property_id);
     }
 }
