@@ -14,15 +14,15 @@ use Validator;
 class FrontController extends Controller
 {
 
-    public function properties(Request $request){
+    public function properties($slug_name){
 
         $selected_country="";
-        if(isset($request->country)){
-           $cid = Country::where('name',ucfirst($request->country))->first();
+        if(isset($slug_name) && !empty($slug_name)){
+           $cid = Country::where('name',ucfirst($slug_name))->first();
             $properties= Property::where('is_active',1)
                                     ->where('country_id',$cid->id)
                                     ->orderBy('created_at','desc')->paginate('9');
-            $selected_country= ucfirst($request->country);
+            $selected_country= ucfirst($slug_name);
 
         }else{
             $properties= Property::where('is_active',1)->orderBy('created_at','desc')->paginate('9');
