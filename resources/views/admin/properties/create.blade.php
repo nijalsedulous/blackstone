@@ -162,7 +162,7 @@
                 <section class="panel">
                     <header class="panel-heading">
 
-                        <h2 class="panel-title">Property Images <small class="text-danger">Image size is required (750X500) in px</small></h2>
+                        <h2 class="panel-title">Property Images <small class="text-danger">Image size is required (635X350) in px</small></h2>
 
 
                     </header>
