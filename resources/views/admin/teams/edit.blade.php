@@ -74,6 +74,8 @@
 															</span>
                                                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                             </div>
+                                            <label for="sub_title" class="error">Image size is required (260X270) in px</label>
+
                                         </div>
                                     </div>
                                     <div class="col-sm-2">

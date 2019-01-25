@@ -89,6 +89,8 @@
                                                 <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
                                             </div>
                                         </div>
+                                        <label for="sub_title" class="error">Image size is required (800X500) in px</label>
+
                                     </div>
                                     <div class="col-sm-3">
                                         <img src="{{$blog->image_url}}" style="width: 250px;">

@@ -162,7 +162,9 @@
                 <section class="panel">
                     <header class="panel-heading">
 
-                        <h2 class="panel-title">Property Images</h2>
+                        <h2 class="panel-title">Property Images <small class="text-danger">Image size is required (750X500) in px</small></h2>
+
+
                     </header>
                     <div class="panel-body">
                         <div class="input-group control-group increment" >
