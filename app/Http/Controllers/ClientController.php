@@ -109,7 +109,7 @@ class ClientController extends Controller
         $client = Client::find($id);
         $old_country_flag =$client->country_flag;
         $client->name=$input['name'];
-        $client->slug_name = strtolower(str_replace(" ","-",$input['country_name']));
+        $client->slug_name = strtolower(str_replace(" ","-",$input['name']));
         $client->description=$input['description'];
 
         if(isset($input['country_flag'])){
