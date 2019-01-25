@@ -14,7 +14,7 @@ use Validator;
 class FrontController extends Controller
 {
 
-    public function properties($slug_name){
+    public function properties($slug_name=""){
 
         $selected_country="";
         if(isset($slug_name) && !empty($slug_name)){
