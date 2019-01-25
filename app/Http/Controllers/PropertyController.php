@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Property_image;
 use App\Models\Property_contact;
-use App\Models\Country;
+use App\Models\Client;
 use Validator;
 use Image;
 use File;
@@ -49,8 +49,7 @@ class PropertyController extends Controller
         }
 
 
-        $pro_countires = Property::groupBy('country_id')->get(['country_id']);
-        $data['countries']=Country::whereIn('id',$pro_countires)->pluck('name', 'id')->toArray();
+        $data['countries']=Client::pluck('name', 'id')->toArray();
         $data['properties']=$properties;
         $data['input_data']=$input;
 
@@ -64,7 +63,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        $data['countries']=Country::pluck('name', 'id')->toArray();
+        $data['countries']=Client::pluck('name', 'id')->toArray();
         return view('admin.properties.create',$data);
     }
 
@@ -136,7 +135,7 @@ class PropertyController extends Controller
     public function edit($id)
     {
         $data['property']=Property::find($id);
-        $data['countries']=Country::pluck('name', 'id')->toArray();
+        $data['countries']=Client::pluck('name', 'id')->toArray();
         return view('admin.properties.edit',$data);
     }
 

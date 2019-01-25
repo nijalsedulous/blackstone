@@ -40,7 +40,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'country_name' => 'required',
+            'name' => 'required',
             'country_flag' => 'required',
         ]);
 
@@ -55,6 +55,7 @@ class ClientController extends Controller
             $country_flag = $this->saveClientImage($request);
             $input['country_flag'] = $country_flag;
         }
+        $input['slug_name'] = strtolower(str_replace(" ","-",$input['name']));
         Client::create($input);
 
         $request->session()->flash('message', 'Client has been added successfully!');
@@ -94,7 +95,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'country_name' => 'required',
+            'name' => 'required',
 
         ]);
 
@@ -107,7 +108,8 @@ class ClientController extends Controller
         $input = $request->all();
         $client = Client::find($id);
         $old_country_flag =$client->country_flag;
-        $client->country_name=$input['country_name'];
+        $client->name=$input['name'];
+        $client->slug_name = strtolower(str_replace(" ","-",$input['country_name']));
         $client->description=$input['description'];
 
         if(isset($input['country_flag'])){

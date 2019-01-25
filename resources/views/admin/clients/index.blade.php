@@ -51,7 +51,7 @@
 
                     <tr>
                         <td data-title="Id" width="5%">{{$client->id}}</td>
-                        <td data-title="Name"  width="20%">{{$client->country_name}}</td>
+                        <td data-title="Name"  width="20%">{{$client->name}}</td>
                         <td data-title="Description" width="15%" ><img src="{{$client->country_flag}}"></td>
                         <td data-title="URL" >{{$client->description}}</td>
                         <td data-title="Created">{{date('d-M-Y',strtotime($client->created_at))}}</td>

@@ -114,11 +114,12 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad">
                 @foreach($clients as $client)
-                    <a href="/properties/{{strtolower($client->country_name)}}">
+                    <a href="/properties/{{strtolower($client->slug_name)}}">
                     <div class="client_box"> <img src="{{$client->country_flag}}" class="img-fluid" alt="{{$client->name}}" />
-                    <p class="country">{{$client->country_name}}</p>
+                    <p class="country">{{$client->name}}</p>
+                    </div>
                     </a>
-                </div>
+
                 @endforeach
 
             </div>

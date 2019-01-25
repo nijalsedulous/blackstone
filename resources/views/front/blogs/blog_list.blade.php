@@ -24,7 +24,7 @@
                             <div class="welcome"><a href="/blog/{{$blog->slug_name}}" style="color:#383838;">{{$blog->title}}</a></div>
                             <div class="post_meta">
                                 <span><a href="#"><i class="fa fa-calendar"></i> {{date('d-M-Y',strtotime($blog->created_at))}} </a></span>
-                                <span><i class="fa fa-archive"></i> {{$blog->category->name}}</span></div>
+                                <span><i class="fa fa-archive"></i> <a href="/blog/category/{{$blog->category->slug_name}}">{{$blog->category->name}}</a></span></div>
                             <p class="blog_pera">{!! str_limit($blog->description,350,'...')  !!}</p>
                             <p><a href="/blog/{{$blog->slug_name}}" class="btn_black">Read more</a></p>
                         </div>

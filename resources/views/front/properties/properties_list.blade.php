@@ -6,8 +6,8 @@
     <div class="inner_title_bg">
         <div class="container">
             <div class="breadcrumb-area">
-                <h1>PROPERTIES LIST</h1>
-                <div class="breadcrumbs"> <a href="/">Home</a>Properties List</div>
+                <h1>PROPERTIES LIST @if($selected_country) of {{ str_replace("-"," ",$selected_country) }}  @endif</h1>
+                <div class="breadcrumbs"> <a href="/">Home</a>Properties List @if($selected_country) of {{ str_replace("-"," ",ucwords($selected_country)) }}  @endif</div>
             </div>
         </div>
     </div>
@@ -17,20 +17,13 @@
                 <div class="col-lg-9 col-md-6 col-sm-6 col-xs-12"><div class="Country_sel">Select Country :</div></div>
                 <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group">
-                        {{--<select class="selectpicker search-fields selectBox" name="location" >--}}
-                            {{--<option v-model="">Select Location</option>--}}
-                            {{--<option>United Kingdom</option>--}}
-                            {{--<option>American Samoa</option>--}}
-                            {{--<option>Belgium</option>--}}
-                            {{--<option>Canada</option>--}}
-                            {{--<option>Delaware</option>--}}
-                        {{--</select>--}}
 
                         {!! Form::select('country_id', $countries, $selected_country, ['class'=>'selectpicker search-fields selectBox','placeholder' => 'Select Location','onchange'=>'filter_property(this)']); !!}
 
                     </div>
                 </div>
             </div>
+            @if($properties->count() > 0)
             <div class="row">
                 @foreach($properties as $property)
                     <?php $property_image =$property->property_images->first();
@@ -51,6 +44,15 @@
 
             </div>
             <div style="text-align: center">{{ $properties->links() }}</div>
+            @else
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger text-center">
+                            <strong>Sorry!</strong> No Properties Found Of This Country.
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </section>
 

@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Property;
-use App\Models\Country;
+use App\Models\Client;
 use App\Models\Property_contact;
 use App\Models\Contact;
 use App\Models\Blog;
+use App\Models\Category;
+
 
 use Validator;
 
@@ -18,11 +20,11 @@ class FrontController extends Controller
 
         $selected_country="";
         if(isset($slug_name) && !empty($slug_name)){
-           $cid = Country::where('name',ucfirst($slug_name))->first();
+           $cid = Client::where('slug_name',$slug_name)->first();
             $properties= Property::where('is_active',1)
                                     ->where('country_id',$cid->id)
                                     ->orderBy('created_at','desc')->paginate('9');
-            $selected_country= ucfirst($slug_name);
+            $selected_country= $slug_name;
 
         }else{
             $properties= Property::where('is_active',1)->orderBy('created_at','desc')->paginate('9');
@@ -31,7 +33,7 @@ class FrontController extends Controller
         $pro_countires = Property::where('is_active',1)->groupBy('country_id')->get(['country_id']);
 
         $data['properties']=$properties;
-        $data['countries']=Country::whereIn('id',$pro_countires)->pluck('name', 'name')->toArray();
+        $data['countries']=Client::pluck('name', 'slug_name')->toArray();
         $data['selected_country']=$selected_country;
         return view('front.properties.properties_list',$data);
     }
@@ -147,5 +149,13 @@ class FrontController extends Controller
         }else{
             abort('404');
         }
+    }
+
+    public function category_blog($slug_name){
+
+        $category_id = Category::where('slug_name',$slug_name)->first()->id;
+        $blogs= Blog::where('category_id',$category_id)->orderBy('created_at','desc')->paginate('10');
+        $data['blogs']=$blogs;
+        return view('front.blogs.blog_list',$data);
     }
 }

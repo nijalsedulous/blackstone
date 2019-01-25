@@ -112,6 +112,7 @@ class NavigationController extends Controller
         $nav->name=$input['name'];
         $nav->nav_type=$input['nav_type'];
         $nav->url=$input['url'];
+        $nav->sort_order=$input['sort_order'];
         $nav->save();
 
         $request->session()->flash('message', 'Navigation has been updated successfully!');

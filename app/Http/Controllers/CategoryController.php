@@ -52,6 +52,8 @@ class CategoryController extends Controller
         }
 
         $input = $request->all();
+        $input['slug_name'] = strtolower(str_replace(" ","-",$input['name']));
+
         Category::create($input);
 
         $request->session()->flash('message', 'Category has been added successfully!');
@@ -105,6 +107,8 @@ class CategoryController extends Controller
         $input = $request->all();
         $cat = Category::find($id);
         $cat->name=$input['name'];
+        $cat->slug_name = strtolower(str_replace(" ","-",$input['name']));
+
 
         $cat->save();
 

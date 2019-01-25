@@ -36,13 +36,13 @@
                         <div class="row">
                             <div class="col-md-10">
 
-                                <div class="form-group @if ($errors->has('country_name')) has-error  @endif">
+                                <div class="form-group @if ($errors->has('name')) has-error  @endif">
                                     <label class="col-sm-4 control-label"> Country Name: <span class="text-danger">*</span></label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" name="country_name" value="{{$client->country_name}}">
+                                        <input type="text" class="form-control" name="name" value="{{$client->name}}">
 
-                                        @if ($errors->has('country_name'))
-                                            <label for="country_name" class="error">{{ $errors->first('country_name') }}</label>
+                                        @if ($errors->has('name'))
+                                            <label for="name" class="error">{{ $errors->first('name') }}</label>
                                         @endif
                                     </div>
                                 </div>

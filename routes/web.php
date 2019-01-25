@@ -16,6 +16,8 @@ Route::get('thank-you', 'PageController@thank_you')->name('thank-you');
 
 Route::get('blog', 'FrontController@blog')->name('blog');
 Route::get('blog/{slug_name}', 'FrontController@blog_details')->name('blog_details');
+Route::get('blog/category/{slug_name}', 'FrontController@category_blog')->name('category_blog');
+
 
 
 
