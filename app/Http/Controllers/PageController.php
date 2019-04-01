@@ -23,7 +23,7 @@ class PageController extends Controller
             ->orderBy('created_at','desc')
             ->get()->take(3);
         $page_content = Page::where('name','About Us')->first();
-        $teams= Team::orderBy('id','desc')->get();
+        $teams= Team::orderBy('id','asc')->get();
         $data['teams']=$teams;
         $data['page_content']=$page_content;
         $data['why_us_content']=Page::where('name','Why Us')->first();
