@@ -16,7 +16,15 @@
         <div class="carousel-inner">
             @foreach($banners as $bk => $banner)
             <div class="carousel-item @if($bk == 0) active @endif">
+                @if($banner->banner_type == 'image')
                 <img src="{{$banner->image_url}}" alt="{!! $banner->title  !!}" class="d-block">
+                @else
+                    <video loop>
+                        <source src="{{$banner->image_url}}" type="video/mp4" width="100%" height="auto">
+
+                        Your browser does not support the video tag.
+                    </video>
+                @endif
                 <div class="carousel-caption">
                     <p>{!! $banner->title  !!}</p>
                     <h1>{!! $banner->sub_title  !!}</h1>

@@ -59,6 +59,30 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-md-4 control-label" for="inputSuccess">Banner Type</label>
+                                <div class="col-md-8">
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="banner_type" id="radioImage" value="image" @if($banner->banner_type == 'image') checked @endif> Image
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="radio" name="banner_type" id="radioVideo" value="video" @if($banner->banner_type == 'video') checked @endif> Video
+                                    </label>
+
+                                </div>
+                            </div>
+                            <?php
+                                if($banner->banner_type == 'image'){
+                                    $imageElement="block";
+                                    $videoElement="none";
+                                }
+
+                            if($banner->banner_type == 'video'){
+                                $imageElement="none";
+                                $videoElement="block";
+                            }
+                            ?>
+
+                            <div class="form-group" id="imageElement" style="display: {{$imageElement}};">
                                 <label class="col-sm-4 control-label"> Image: </label>
                                 <div class="col-sm-6">
                                     <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -78,10 +102,47 @@
                                     <label for="sub_title" class="error">Image size is required (1906X726) in px</label>
 
                                 </div>
+                                @if($banner->banner_type == 'image')
                                 <div class="col-sm-2">
                                     <img src="{{$banner->image_url}}" style="width: 300px;">
                                 </div>
+                                @endif
                             </div>
+
+
+                            <div class="form-group" id="videoElement" style="display: {{$videoElement}};">
+                                <label class="col-sm-4 control-label"> Video:<span class="text-danger">*</span></label>
+                                <div class="col-sm-6">
+                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                                        <div class="input-append">
+                                            <div class="uneditable-input">
+                                                <i class="fa fa-file fileupload-exists"></i>
+                                                <span class="fileupload-preview"></span>
+                                            </div>
+                                            <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select Video </span>
+																<input type="file" name="banner_image" />
+															</span>
+                                            <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                @if($banner->banner_type == 'video')
+                                <div class="col-sm-2" >
+
+
+                                    <video width="320" height="240" controls>
+                                        <source src="{{$banner->image_url}}" type="video/mp4">
+
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                @endif
+                            </div>
+                            
 
                             <div class="form-group ">
                                 <label class="col-sm-4 control-label"> Active/Inactive:</label>
@@ -123,6 +184,20 @@
     <script type="text/javascript">
 
         jQuery(document).ready(function($) {
+
+            $('input[type=radio][name=banner_type]').change(function() {
+                if (this.value == 'image') {
+                    $('#imageElement').show();
+                    $('#videoElement').hide();
+                }
+                else if (this.value == 'video') {
+                    $('#videoElement').show();
+                    $('#imageElement').hide();
+
+
+                }
+            });
+
 
         });
 

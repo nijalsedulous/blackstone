@@ -106,6 +106,10 @@ class PropertyController extends Controller
             $this->savePropertyPdf($propertyId,$request);
         }
 
+        if(isset($input['banner_image'])){
+            $this->saveBannerImage($propertyId,$request);
+        }
+
         if(isset($input['images_name'])) {
             $this->savePropertyImages($propertyId, $request);
         }
@@ -178,6 +182,10 @@ class PropertyController extends Controller
                 $this->savePropertyPdf($id,$request);
             }
 
+            if(isset($input['banner_image'])){
+                $this->saveBannerImage($id,$request);
+            }
+
             if(isset($input['images_name'])) {
                 $this->savePropertyImages($id, $request);
             }
@@ -234,6 +242,31 @@ class PropertyController extends Controller
         $property = Property::find($propertyId);
         $property->pdf_url = $pdf_full_path;
         $property->save();
+
+    }
+
+
+    public function saveBannerImage($propertyId,$request){
+
+        $banner_path = 'uploads/properties';
+        if(!File::exists($banner_path)) {
+            File::makeDirectory($banner_path, 0777, true, true);
+        }
+
+        $properties_path_withId = $banner_path."/".$propertyId;
+
+        if(!File::exists($properties_path_withId)) {
+            File::makeDirectory($properties_path_withId, 0777, true, true);
+        }
+        $file_name = $request->file('banner_image')->getClientOriginalName();
+        $file_extension = $request->file('banner_image')->getClientOriginalExtension();
+        $unique_name = md5($file_name. time());
+        $new_file_name = $unique_name.".".$file_extension;
+        $request->file('banner_image')->move($properties_path_withId, $new_file_name);
+        $property = Property::find($propertyId);
+        $property->banner_image_url = "/".$properties_path_withId.'/'.$new_file_name;
+        $property->save();
+
 
     }
 

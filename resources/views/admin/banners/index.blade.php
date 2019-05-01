@@ -40,6 +40,7 @@
                     <th>id</th>
                     <th>Title</th>
                     <th>Sub Title</th>
+                    <th>Type</th>
                     <th>Status</th>
                     <th class="hidden-xs hidden-sm">Created</th>
                     <th class="text-right">Actions</th>
@@ -53,6 +54,7 @@
                         <td data-title="Id" width="5%">{{$banner->id}}</td>
                         <td data-title="Name"  width="20%">{{$banner->title}}</td>
                         <td data-title="Description" >{{$banner->sub_title}}</td>
+                        <td data-title="Type" >{{ucfirst($banner->banner_type)}}</td>
                         <td data-title="URL" width="10%">@if($banner->is_active) Active @else Inactive @endif </td>
                         <td data-title="Created" width="10%">{{date('d-M-Y',strtotime($banner->created_at))}}</td>
                         <td data-title="Actions" class="text-right actions">

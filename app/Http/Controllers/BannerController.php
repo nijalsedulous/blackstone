@@ -113,6 +113,7 @@ class BannerController extends Controller
         $old_banner_image =$banner->image_url;
         $banner->title=$input['title'];
         $banner->sub_title=$input['sub_title'];
+        $banner->banner_type=$input['banner_type'];
         $banner->is_active = isset($input['is_active'])?1:0;
 
 

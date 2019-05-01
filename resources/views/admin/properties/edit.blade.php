@@ -129,7 +129,33 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group" id="imageElement">
+                                    <label class="col-sm-4 control-label">Banner Image:<span class="text-danger">*</span></label>
+                                    <div class="col-sm-8">
+                                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="input-append">
+                                                <div class="uneditable-input">
+                                                    <i class="fa fa-file fileupload-exists"></i>
+                                                    <span class="fileupload-preview"></span>
+                                                </div>
+                                                <span class="btn btn-default btn-file">
+																<span class="fileupload-exists">Change</span>
+																<span class="fileupload-new">Select Image </span>
+																<input type="file" name="banner_image" />
+															</span>
+                                                <a href="#" class="btn btn-default fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                            </div>
+                                        </div>
+                                        <label for="sub_title" class="error">Image size is required (1906X726) in px</label>
 
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-6"></div>
+                            <div class="col-md-6">
+                                <img src="{{$property->banner_image_url}}" style="width: 300px;">
                             </div>
                         </div>
 

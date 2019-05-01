@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="property_title_bg">
+    <div class="property_title_bg" style="background-image: url({{$property->banner_image_url}})">
         <div class="container">
             <div class="breadcrumb-area">
                 <h1>PROPERTIES DETAIL</h1>
